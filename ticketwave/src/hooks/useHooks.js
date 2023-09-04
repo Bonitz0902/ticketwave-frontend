@@ -10,14 +10,14 @@ export const useApis = () => {
         dispatch(resetMovie(response.data));
     };
 
-    async function searchMovieByTitle(movieTitle) {
-        const response = await dashboardApi.searchMovieByTitle({ movieTitle: movieTitle });
-        dispatch(resetMovie(response.data));
+    async function filteredMovies(movieTitle) {
+        await dashboardApi.searchMovieByTitle(movieTitle);
+        loadAllMovies();
     };
 
 
     return {
         loadAllMovies,
-        searchMovieByTitle,
+        filteredMovies,
     };
 }

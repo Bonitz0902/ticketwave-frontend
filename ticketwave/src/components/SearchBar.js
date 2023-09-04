@@ -9,6 +9,7 @@ const { Search } = Input;
 export const SearchBar = () => {
     const dispatch = useDispatch();
     const [input, setInput] = useState("");
+    const [filteredMovies, setFilteredMovies] = useState([]);
     const movieList = useSelector((state) => state.movieSlice.movieSlice);
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export const SearchBar = () => {
 
     const handleChange = (value) => {
         setInput(value);
+        setFilteredMovies(movieList.filter(movies => movies.movieTitle.toLowerCase().includes(value)));
     }
 
     return (
@@ -31,8 +33,8 @@ export const SearchBar = () => {
                 onChange={(event) => handleChange(event.target.value)}
             />
             <ul>
-                {movieList.map((item) =>
-                    <li key={item.id}> {item.movieTitle} </li>
+                {filteredMovies.map((movie) =>
+                    <li key={movie.id}>{movie.movieTitle}</li>
                 )}
             </ul>
         </div>
