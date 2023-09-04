@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { BookingPage } from './pages/BookingPage';
 import { PaymentPage } from './pages/PaymentPage';
+import { CreateAccountPage } from './pages/CreateAccountPage';
+import { LoginAccountPage } from './pages/LoginAccountPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
@@ -17,6 +19,12 @@ const router = createBrowserRouter([{
     },
     {
       path: "/payment", element: <PaymentPage />
+    },
+    {
+      path: "/createAccount", element: <CreateAccountPage />
+    },
+    {
+      path: "/login", element: <LoginAccountPage />
     },
   ]
 }]);

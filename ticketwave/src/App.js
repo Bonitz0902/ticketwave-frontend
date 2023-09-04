@@ -14,6 +14,8 @@ function App() {
           <li><a href={"/"}>Home</a></li>
           <li><a href={"/booking"}>Booking</a></li>
           <li><a href={"/payment"}>Payment</a></li>
+          <li><a href={"/createAccount"}>Cerate Account</a></li>
+          <li><a href={"/login"}>Login Account</a></li>
         </ul>
       </nav>
       <Outlet />
