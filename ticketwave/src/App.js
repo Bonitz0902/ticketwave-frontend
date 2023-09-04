@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Movies from './components/Movies';
+import SearchMovie from './components/SearchMovie';
 
 function App() {
   const LOCAL_BASE_URL = "http://localhost:8080/";
 
   const baseURLByEnv = process.env.REACT_APP_BASE_URL || LOCAL_BASE_URL;
- 
+
   const load = () => {
     const targetURL = 'Movies.js';
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Movies> </Movies>
+        <SearchMovie />
       </header>
     </div>
   );
