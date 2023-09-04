@@ -18,6 +18,7 @@ function App() {
           <li><a href={"/login"}>Login Account</a></li>
           <li><a href={"/movieDetail"}>Movie Detail</a></li>
           <li><a href={"/about"}>About</a></li>
+          <li><a href={"/error"}>Error</a></li>
         </ul>
       </nav>
       <Outlet />

@@ -10,6 +10,7 @@ import { CreateAccountPage } from './pages/CreateAccountPage';
 import { LoginAccountPage } from './pages/LoginAccountPage';
 import { MovieDetailPage } from './pages/MovieDetailPage';
 import { AboutPage } from './pages/AboutPage';
+import { ErrorPage } from './pages/ErrorPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
@@ -33,6 +34,9 @@ const router = createBrowserRouter([{
     },
     {
       path: "/about", element: <AboutPage />
+    },
+    {
+      path: "/error", element: <ErrorPage />
     },
   ]
 }]);
