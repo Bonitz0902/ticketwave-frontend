@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from "antd";
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
+import { getAllMovies } from './../api/dashboardApi';
 
 const { Search } = Input;
 
