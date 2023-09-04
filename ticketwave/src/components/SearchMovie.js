@@ -1,11 +1,9 @@
-import { Input } from "antd";
-
-const { Search } = Input;
+import { SearchBar } from "./SearchBar";
 
 const SearchMovie = () => {
     return (
         <div>
-            <Search placeholder="Search Movie" enterButton />
+            <SearchBar />
         </div>
     )
 }
