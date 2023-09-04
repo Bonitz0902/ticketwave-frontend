@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BookingPage } from './pages/BookingPage';
+import { PaymentPage } from './pages/PaymentPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
   path: "/",
-  element: <App />
+  element: <App />,
+  children: [
+    {
+      path: "/booking", element: <BookingPage />
+    },
+    {
+      path: "/payment", element: <PaymentPage />
+    },
+  ]
 }]);
 
 root.render(
