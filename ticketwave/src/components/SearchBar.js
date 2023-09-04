@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from "antd";
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
+import { getAllMovies } from './../api/dashboardApi';
 
 const { Search } = Input;
 
@@ -31,10 +32,9 @@ export const SearchBar = () => {
                 onChange={(event) => handleChange(event.target.value)}
             />
             <ul>
-                {movieList.filter((item) => item.text.toLowerCase().includes(input))
-                    .map((item) =>
-                        <li key={item.id}> {item.text} </li>
-                    )}
+                {movieList.map((item) =>
+                    <li key={item.id}> {item.movieTitle} </li>
+                )}
             </ul>
         </div>
     )
