@@ -16,6 +16,8 @@ function App() {
           <li><a href={"/payment"}>Payment</a></li>
           <li><a href={"/createAccount"}>Cerate Account</a></li>
           <li><a href={"/login"}>Login Account</a></li>
+          <li><a href={"/movieDetail"}>Movie Detail</a></li>
+          <li><a href={"/about"}>About</a></li>
         </ul>
       </nav>
       <Outlet />

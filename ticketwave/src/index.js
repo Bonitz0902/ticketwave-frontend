@@ -8,6 +8,8 @@ import { BookingPage } from './pages/BookingPage';
 import { PaymentPage } from './pages/PaymentPage';
 import { CreateAccountPage } from './pages/CreateAccountPage';
 import { LoginAccountPage } from './pages/LoginAccountPage';
+import { MovieDetailPage } from './pages/MovieDetailPage';
+import { AboutPage } from './pages/AboutPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([{
@@ -25,6 +27,12 @@ const router = createBrowserRouter([{
     },
     {
       path: "/login", element: <LoginAccountPage />
+    },
+    {
+      path: "/movieDetail", element: <MovieDetailPage />
+    },
+    {
+      path: "/about", element: <AboutPage />
     },
   ]
 }]);
