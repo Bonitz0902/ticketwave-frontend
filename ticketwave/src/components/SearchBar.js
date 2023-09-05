@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { AutoComplete, Input } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
+import '../css/SearchBar.css';
+
 
 const { Search } = Input;
 const { Option } = AutoComplete;
@@ -48,6 +51,7 @@ export const SearchBar = () => {
             
         )}
             
+        <div className="searchBar">
             <AutoComplete
                 style={{ width: 300 }}
                 placeholder="Search Movie"
@@ -60,11 +64,15 @@ export const SearchBar = () => {
                         {movie.movieTitle}
                     </Option>
                 ))}
-            </AutoComplete>
 
-            <button type="submit">
-                <i className="fas fa-search"></i>
+      
+            </AutoComplete>
+            <button className="submitButton" type="submit">
+            <SearchOutlined className="iconSearch"/>
             </button>
+        
+        </div>
+
     </div>
     )
 }

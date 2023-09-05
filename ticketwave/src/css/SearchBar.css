@@ -1,0 +1,22 @@
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.submitButton {
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+    text-align: right;
+    font-size: larger;
+    color: whitesmoke;
+}
+
+.iconSearch:hover {
+    color: antiquewhite;
+}
