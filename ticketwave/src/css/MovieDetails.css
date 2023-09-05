@@ -1,8 +1,8 @@
 .movieDetails {
+    margin: auto;
     height: 425px;
     width: 300px;
     padding: 20px;
-    border: 4px solid black;
     border-radius: 20px;
 }
 
@@ -12,4 +12,14 @@ h3, h4 {
 
 .movieDescription, p {
     font-size: 10px;
+}
+
+.bookNowBtn {
+    background-color: rgb(19,36,38);
+    border-radius: 30px;
+}
+
+.ratingIcon {
+    color: #FFCD3C;
+    text-shadow: -1px -1px rgba(0,0,0,1), 1px 1px rgba(255,255,255,1);
 }
