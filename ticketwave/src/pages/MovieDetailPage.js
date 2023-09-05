@@ -1,4 +1,4 @@
-import {Button, Image, Modal} from "antd";
+import {Button, Image} from "antd";
 import '../css/MovieDetails.css';
 import {StarFilled} from "@ant-design/icons";
 import {useSelector} from "react-redux";
