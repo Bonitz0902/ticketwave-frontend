@@ -15,36 +15,42 @@ import { AboutPage } from './pages/AboutPage';
 import { ErrorPage } from './pages/ErrorPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const router = createBrowserRouter([{
-  path: "/",
-  element: <App />,
-  errorElement: <ErrorPage />,
-  children: [
-    {
-      path: "/booking", element: <BookingPage />
-    },
-    {
-      path: "/payment", element: <PaymentPage />
-    },
-    {
-      path: "/createAccount", element: <CreateAccountPage />
-    },
-    {
-      path: "/login", element: <LoginAccountPage />
-    },
-    {
-      path: "/movieDetail", element: <MovieDetailPage />
-    },
-    {
-      path: "/about", element: <AboutPage />
-    },
-  ]
-}]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/booking",
+    element: <BookingPage />
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />
+  },
+  {
+    path: "/createAccount",
+    element: <CreateAccountPage />
+  },
+  {
+    path: "/login",
+    element: <LoginAccountPage />
+  },
+  {
+    path: "/movieDetail",
+    element: <MovieDetailPage />
+  },
+  {
+    path: "/about",
+    element: <AboutPage />
+  },
+]);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
