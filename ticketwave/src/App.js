@@ -7,10 +7,6 @@ import {Button} from "antd";
 import {useState} from "react";
 
 function App() {
-  const[isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = {
-
-  }
   return (
     <div className="App">
 
@@ -19,7 +15,7 @@ function App() {
         </head>
         <SearchMovie />
       </nav>
-      <Button onClick={showModal}>Sample Button</Button>
+      <MovieDetailPage />
       <Outlet />
     </div>
   );
