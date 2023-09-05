@@ -1,20 +1,22 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { resetMovie } from '../components/movieSlice';
+import { resetMovie, setSelectedMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi"; 
 import '../css/Movies.css';
 import { Col, Row} from 'antd';
-import { NavLink } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import { CaretRightOutlined } from '@ant-design/icons';
 import "react-multi-carousel/lib/styles.css";
 import '../App.css';
+import {MovieDetailPage} from "../pages/MovieDetailPage";
+import { withRouter } from "react-router-dom";
 
 const Movies = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const movieList = useSelector((state) => state.movieSlice.movieSlice);
-
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -41,6 +43,11 @@ const Movies = () => {
         }
         fetchData();
     }, []);
+
+    const selectMovie = (id) => {
+        dispatch(setSelectedMovie(id));
+        navigate('/movieDetail', {replace: true});
+    }
 
     return (
         <div className="parent">
@@ -73,7 +80,6 @@ const Movies = () => {
             <h2 id="movie-reco-title">Movie Recommendation
             <button> <CaretRightOutlined className="hello"/></button>
             </h2>
-          
 
             <div className="movies-reco">
                 <Carousel
@@ -96,6 +102,7 @@ const Movies = () => {
                         height: '450px',
                         width: '350px'
                     }}
+                    onClick={() => selectMovie(item.id)}
                     />
                 </div>
                 ))}
