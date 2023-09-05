@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+* {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .parent {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+   
+  }
+
+  #movie-reco-title {
+    margin-top: -50px;
+    color: rgb(19,36,38);
+  }
+
+  button {
+    background-color: transparent;
+    list-style: none;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    color: gray;
+  }
+  
+  #movie-avail-title {
+    color: rgb(19,36,38);
+  }
+
+  .movies-reco{
+    padding-top: 20px;
+    border-radius: 20px;
+    background: #000;
+  }
+
+  .movies-avail{
+    padding-top: 20px;
+    border-radius: 20px;
+    background: #000;
+  }
+
+  
+  .slider {
+    cursor: pointer;
+    margin: 0 0px;
+    overflow: "hidden";
+    padding: 2rem 0;
+  }
+  
+  .slider img {
+    width: 100%;
+    border-radius:10px
+  }
+  
+  .react-multi-carousel-list {
+    padding: 0rem 0 2rem 0;
+  }
+
+  /* .custom-carousel .react-multiple-carousel__arrow--left {
+    display: none; 
+  } */
+  

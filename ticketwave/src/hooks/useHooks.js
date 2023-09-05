@@ -10,14 +10,8 @@ export const useApis = () => {
         dispatch(resetMovie(response.data));
     };
 
-    async function filteredMovies(movieTitle) {
-        await dashboardApi.searchMovieByTitle(movieTitle);
-        loadAllMovies();
-    };
-
 
     return {
         loadAllMovies,
-        filteredMovies,
     };
 }
