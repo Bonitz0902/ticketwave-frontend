@@ -9,10 +9,11 @@ function App() {
     <div className="App">
 
       <nav>
-        <head>
-        </head>
         <SearchMovie />
       </nav>
+
+ 
+      <Movies></Movies>
       <Outlet />
     </div>
   );
