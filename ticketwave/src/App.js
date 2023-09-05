@@ -2,6 +2,7 @@ import './App.css';
 import Movies from './components/Movies';
 import { Outlet } from 'react-router-dom';
 import SearchMovie from './components/SearchMovie';
+import {MovieDetailPage} from "./pages/MovieDetailPage";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <li><a href={"/error"}>Error</a></li>
         </ul>
       </nav>
+      <MovieDetailPage />
       <Outlet />
     </div>
   );
