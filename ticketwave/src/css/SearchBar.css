@@ -2,7 +2,7 @@
 .searchBar {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 0px, 20px;
 }
 
 .submitButton {
