@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { AutoComplete, Input } from "antd";
+import { AutoComplete } from "antd";
 import { SearchOutlined } from '@ant-design/icons';
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
 import '../css/SearchBar.css';
 
 const { Option } = AutoComplete;
-
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
@@ -43,14 +42,11 @@ export const SearchBar = () => {
                         </Option>
                     ))}
 
-
                 </AutoComplete>
                 <button className="submitButton" type="submit">
                     <SearchOutlined className="iconSearch" />
                 </button>
-
             </div>
-
         </div>
     )
 }
