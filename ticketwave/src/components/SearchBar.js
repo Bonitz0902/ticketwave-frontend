@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Input } from "antd";
+import { AutoComplete, Input } from "antd";
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
 
 const { Search } = Input;
+const { Option } = AutoComplete;
+
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
@@ -41,24 +43,28 @@ export const SearchBar = () => {
         {
             movieList.map((items) =>
             <span key={items.id}>
-                {items.movieTitle}
+                {/* {items.movieTitle} */}
             </span>
             
         )}
             
-        <Search
-            placeholder="Search Movie"
-            value={input}
-            onChange={(event) => handleChange(event.target.value)}
-            onSearch={() => searchMovies(input)} 
-            />
+            <AutoComplete
+                style={{ width: 300 }}
+                placeholder="Search Movie"
+                value={input}
+                onChange={(value) => handleChange(value)}
+                onSelect={(value) => searchMovies(value)}
+            >
+                {filteredMovies.map((movie) => (
+                    <Option key={movie.id} value={movie.movieTitle}>
+                        {movie.movieTitle}
+                    </Option>
+                ))}
+            </AutoComplete>
 
-        <ul>
-            {filteredMovies.map((movie) => (
-            <li key={movie.id}>{movie.movieTitle}</li>
-            ))}
-        </ul>
-        
+            <button type="submit">
+                <i className="fas fa-search"></i>
+            </button>
     </div>
     )
 }

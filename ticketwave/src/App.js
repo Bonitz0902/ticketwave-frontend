@@ -7,8 +7,11 @@ function App() {
 
   return (
     <div className="App">
+     
       <nav>
-        <Movies> </Movies>
+        <head>
+        </head>
+        {/* <Movies> </Movies> */}
         <SearchMovie />
         <ul>
           <li><a href={"/"}>Home</a></li>
