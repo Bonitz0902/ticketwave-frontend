@@ -10,10 +10,10 @@ export const MovieDetailPage = () => {
 
     return (
         <div>
-            <div className={"movieDetails"}>
+            <div className={"movieDetails"} >
                 {
                     movieList.filter(movie => itemId === movie.id).map((item) =>
-                        <>
+                        <div key={item.id}>
                         <h1>Movie Details</h1>
                         <center><Image preview={false} width={250} src={item.imageUrl}/>
                         <h2>{item.movieTitle}</h2>
@@ -22,7 +22,7 @@ export const MovieDetailPage = () => {
                         <p>Genre: {item.genre}</p>
                         <p>Director: {item.director}</p>
                         <Button type={"primary"} className={"bookNowBtn"}> Book Now </Button></center>
-                        </>
+                        </div>
                     )}
             </div>
         </div>

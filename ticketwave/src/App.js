@@ -14,7 +14,7 @@ function App() {
         <SearchMovie />
       </nav>
 
-      <MovieDetailPage />
+        {/*<MovieDetailPage />*/}
  
       <Movies></Movies>
       <Outlet />
