@@ -11,7 +11,7 @@
   }
 
   #movie-reco-title {
-    margin-top: -50px;
+    margin-top: 10px;
     color: rgb(19,36,38);
   }
 
@@ -34,8 +34,10 @@
     background: #000;
   }
 
+
   .movies-avail{
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 20px;
     background: #000;
   }

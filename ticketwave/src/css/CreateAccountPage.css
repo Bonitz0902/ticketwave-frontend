@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.createAccount {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 100px;
+}
+
+h1 {
+    margin-left: -30px;
+    text-align: left;
+}
+
+.inputs {
+    height: 37px;
+    width: 340px;
+    margin-bottom: 10px;
+}
+
+.inputs:hover,
+.inputs:focus,
+.inputs-selector:active,
+.inputs-focused {
+    border-color: #000;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.custom-password-input {
+    outline: none;
+    height: 37px;
+    width: 340px;
+}
+
+.ant-input-affix-wrapper.ant-input-password:hover,
+.ant-input-affix-wrapper-focused
+{
+    border-color: #000;
+    box-shadow: none !important;
+}
+
+.alertBox {
+    margin-top: 10px;
+    width: 340px;
+}
+
+button {
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    background: black;
+    font-weight: bolder;
+    color: white;
+    border: 2px solid transparent;
+    height: 40px;
+    width: 340px;
+}
+
+.haveAccount {
+    margin-left: -100px;
+}
+
+.signIn {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.signIn:hover {
+    color: rgb(19,36,38);
+}
+
+@media screen and (max-width: 768px) {
+    .createAccount {
+      max-width: 100%;
+    }
+
+    button {
+        margin-top: 200px;
+
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .createAccount {
+      max-width: 100%;
+    }
+
+    button {
+        margin-top: 100px;
+
+    }
+}
