@@ -44,12 +44,11 @@ const Movies = () => {
 
     const selectMovie = (id) => {
         dispatch(setSelectedMovie(id));
-        navigate('/movieDetail', {replace: true});
+        navigate('/movieDetail');
     }
 
     return (
         <div className="parent">
-
             <Carousel
                 responsive={responsive}
                 autoPlay={true}
