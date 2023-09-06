@@ -35,11 +35,11 @@ export const LoginAccountPage = () => {
                         initialValues={{ remember: true }}
                     >
                         <Form.Item
-                            name="username/email"
+                            name="email"
                         >
                             <Input
                                 className='login-form-inputs'
-                                placeholder='Username/Email'
+                                placeholder='Email'
                                 value={email}
                                 onChange={(event) => setEmail(event.target.value)}
                             />
