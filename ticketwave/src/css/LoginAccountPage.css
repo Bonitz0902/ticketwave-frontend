@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.login-form-title {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-inputs {
+    height: 37px;
+    width: 340px;
+    margin-bottom: 10px;
+}
+
+.login-form-inputs:hover,
+.login-form-inputs:focus,
+.login-form-inputs-selector:active,
+.login-form-inputs-focused {
+    border-color: #000;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.ant-input-affix-wrapper.ant-input-password:hover,
+.ant-input-affix-wrapper-focused {
+    border-color: #000;
+    box-shadow: none !important;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    background: black;
+    font-weight: bolder;
+    color: white;
+    border: 2px solid transparent;
+    height: 40px;
+    width: 340px;
+}
+
+.login-form-button:hover {
+    background-color: rgb(19, 36, 38);
+}
+
+.login-form-sign-up,
+.login-form-forgot {
+    color: rgb(14, 14, 16);
+}
+
+.login-form-sign-up {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.login-form-sign-up:hover,
+.login-form-forgot:hover {
+    color: rgb(19, 36, 38);
+}
+
+@media screen and (max-width: 768px) {
+    .container-form {
+        max-width: 100%;
+    }
+
+    .login-form-button {
+        margin-top: 200px;
+
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .container-form {
+        margin-top: 25%;
+        max-width: 100%;
+    }
+
+    .login-form-button {
+        margin-top: 80px;
+
+    }
+}
