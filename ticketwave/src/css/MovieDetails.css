@@ -1,12 +1,9 @@
 .movieDetails {
     margin: auto;
-    height: 425px;
-    width: 300px;
-    padding: 20px;
-    border-radius: 20px;
+    justify-content: center;
 }
 
-h1, h2 {
+h2 {
     text-align: center;
 }
 
@@ -16,10 +13,16 @@ h1, h2 {
 
 .bookNowBtn {
     background-color: rgb(19,36,38);
-    border-radius: 30px;
+    margin: 20px;
 }
 
 .ratingIcon {
     color: #FFCD3C;
     text-shadow: -1px -1px rgba(0,0,0,1), 1px 1px rgba(255,255,255,1);
+}
+
+.arrowBack {
+    position: absolute;
+    left: 15%;
+    font-size: 25px;
 }
