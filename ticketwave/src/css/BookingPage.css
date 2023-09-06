@@ -29,16 +29,23 @@
     padding: 20px;
 }
 
-.movieDetailsContainer {
-    width: 50%;
+.bookingDetailsContainer {
+    width: 65%;
+    margin: auto;
 }
 
-.movieDetails {
+.bookingDetails {
+    font-weight: bold;
     float: left;
     text-align: left;
-    width: 50%;
+    width: 75%;
     margin: 0;
     padding: 0;
+}
+
+.bookingPrice {
+    font-weight: bold;
+    text-align: right;
 }
 
 .arrowBack {
@@ -46,3 +53,27 @@
     margin-left: -30px;
     position: relative;
 }
+
+.cinemaLocation {
+    margin-top: 20px;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.cinemaDropdown {
+    width: 100%;
+}
+
+.availableDate {
+    margin-top: 20px;
+    line-height: 10px;
+    font-weight: bold;
+}
+
+.schedule {
+    
+}
+
+
+
+
