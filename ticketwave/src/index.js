@@ -20,36 +20,34 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-    {
-        path: "/booking", 
-        element: <BookingPage />,
-
-    },
-    {
-        path: "/payment", 
-        element: <PaymentPage />,
-
-    },
-    {
-        path: "/createAccount", 
-        element: <CreateAccountPage />,
-
-    },
-    {
-        path: "/login", 
-        element: <LoginAccountPage />,
-
-    },
-    {
-        path: "/about", 
-        element: <AboutPage />,
-
-    },
-    ]
   },
   {
-    path: "/movieDetail", 
+    path: "/booking",
+    element: <BookingPage />,
+
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />,
+
+  },
+  {
+    path: "/createAccount",
+    element: <CreateAccountPage />,
+
+  },
+  {
+    path: "/login",
+    element: <LoginAccountPage />,
+
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
+
+  },
+  {
+    path: "/movieDetail",
     element: <MovieDetailPage />
   },
 ]);
