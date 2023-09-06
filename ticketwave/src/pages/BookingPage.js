@@ -23,11 +23,13 @@ export const BookingPage = () => {
             <div className={"bookingPoster"}>
                 <Image preview={false} width={300} src={"https://c8.alamy.com/comp/2JH2MYR/robbinsposter-the-shawshank-redemption-1994-2JH2MYR.jpg"} className={"bookingImg"}/>
             </div>
-            <div className={"movieDetails"}>
-                <h4>The Shawshank Redemption</h4>
-            </div>
-            <div className={"movieDetails"}>
-                <h4>$300</h4>
+            <div className={"movieDetailsContainer"}>
+                <div className={"movieDetails"}>
+                    The Shawshank Redemption
+                </div>
+                <div className={"movieDetails"}>
+                    $300
+                </div>
             </div>
         </div>
     );
