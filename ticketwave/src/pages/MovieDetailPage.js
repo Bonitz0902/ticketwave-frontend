@@ -6,13 +6,13 @@ import {useSelector} from "react-redux";
 export const MovieDetailPage = () => {
 
     const movieList = useSelector(state => state.movieSlice.movieSlice);
-    const itemId = 4;
+    const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
 
     return (
         <div>
             <div className={"movieDetails"} >
                 {
-                    movieList.filter(movie => itemId === movie.id).map((item) =>
+                    movieList.filter(movie => selectedMovie === movie.id).map((item) =>
                         <div key={item.id}>
                         <h1>Movie Details</h1>
                         <center><Image preview={false} width={250} src={item.imageUrl}/>
