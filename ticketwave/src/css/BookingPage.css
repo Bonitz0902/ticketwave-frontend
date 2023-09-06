@@ -1,0 +1,32 @@
+.bookingNav {
+    background-color: rgb(19,36,38);
+}
+
+img {
+    padding: 5px;
+}
+
+.user-icon {
+    float: right;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.bookingPoster {
+    margin: auto;
+    width: 300px;
+}
+
+.bookingImg {
+    padding: 20px;
+}
+
+.movieDetails {
+    display: flex;
+    flex: 1;
+    width: 50%;
+    padding: 20px;
+}
