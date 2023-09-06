@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../css/CreateAccountPage.css';
-import { Button, Input, Space, Alert } from 'antd';
+import { Input, Alert } from 'antd';
+import { useApis } from "../hooks/useHooks";
 
 export const CreateAccountPage = () => {
     const navigate = useNavigate();
+    const { createAccount } = useApis();
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [showAlertLength, setShowAlertLength] = useState(false);
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
     const returnToLogin = () => {
@@ -29,30 +31,30 @@ export const CreateAccountPage = () => {
         setPassword(event.target.value);
     };
 
+    const isInvalidInput = !name || name.trim() === "" ||
+    !email || email.trim() === "" || !email.match(emailRegex) ||
+    !password || password.trim() === "";
+
+    const isInvalidLength = name.trim().length < 8 || password.trim().length < 8;
 
     const signUp = () => {
-        if(!name || name.trim() === ""
-                 || !email || email.trim() === "" || !email.match(emailRegex)
-                 || !password || password.trim() === "") {
+        if(isInvalidInput) {
             setShowAlert(true);
-           
-        } else {
-            setShowAlert(false);
         }
-
-        if(name.trim().length < 8 || password.trim().length < 8){
+        if(isInvalidLength){
             setShowAlertLength(true);
-        } else {
-            setShowAlertLength(false);
+        } 
+        if(!(isInvalidInput && isInvalidLength)) {
+            createAccount(name, email, password);
         }
-    } 
+    }   
 
     return (
         <div className='parent'>
             <div className='createAccount'>
-                <h1>Create a new account</h1>
+                <h1 className='titleCreate'>Create a new account</h1>
                 <Input
-                    placeholder='Full Name'
+                    placeholder='Enter Username'
                     className='inputs'
                     value={name}
                     onChange={handleName}
