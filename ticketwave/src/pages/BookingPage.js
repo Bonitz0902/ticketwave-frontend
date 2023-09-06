@@ -14,7 +14,7 @@ export const BookingPage = () => {
     return (
         <div className={"bookingContainer"}>
             <nav className={"bookingNav"}>
-                <img src={ticketwavelogo} alt="TicketWave Logo" className="logo" />
+                <img src={ticketwavelogo} alt="TicketWave Logo" className="bookingLogo" />
                 <div className="user-icon">
                     <UserOutlined />
                 </div>
