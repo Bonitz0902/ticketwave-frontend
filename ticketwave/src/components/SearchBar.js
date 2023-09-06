@@ -31,7 +31,7 @@ export const SearchBar = () => {
         <div>
             <div className="searchBar">
                 <AutoComplete
-                    style={{ width: 300 }}
+                    style={{ width: 320 }}
                     placeholder="Search Movie"
                     value={input}
                     onChange={(value) => handleChange(value)}

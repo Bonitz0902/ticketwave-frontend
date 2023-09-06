@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,12 +18,11 @@
     "react-router": "^6.15.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
+    "reduce-reducers": "^1.0.4",
     "router-dom": "^2.2.11",
     "serve": "^14.2.1",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4",
-    "@reduxjs/toolkit": "^1.9.5",
-    "reduce-reducers": "^1.0.4"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "react-scripts start",

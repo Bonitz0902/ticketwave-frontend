@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi"; 
 import '../css/Movies.css';
-import { Col, Row} from 'antd';
-import { NavLink } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import { CaretRightOutlined } from '@ant-design/icons';
 import "react-multi-carousel/lib/styles.css";
@@ -37,7 +35,6 @@ const Movies = () => {
         const fetchData = async () => {
             const response = await dashboardApi.getAllMovies(); 
             dispatch(resetMovie(response.data))
-            console.log(response.data);
         }
         fetchData();
     }, []);
