@@ -31,8 +31,8 @@ const Movies = () => {
         fetchData();
     }, []);
 
-    const selectMovie = (id) => {
-        dispatch(setSelectedMovie(id));
+    const selectMovie = (item) => {
+        dispatch(setSelectedMovie(item));
         navigate('/movieDetail');
     }
 
@@ -62,7 +62,7 @@ const Movies = () => {
                     className="movie-image-landscape"
                     src={item.imageUrlLandscape}
                     alt={item.title}
-                    onClick={() => selectMovie(item.id)}
+                    onClick={() => selectMovie(item)}
                 />
             </div>
             ))}
@@ -84,7 +84,7 @@ const Movies = () => {
                 {movieAvailableList.map((item, index) => (
                     <div key={index} className="card_content">
                         <div key={index} className="card-pad">
-                          <img src={item.imageUrl} onClick={() => selectMovie(item.id)}/>
+                          <img src={item.imageUrl} onClick={() => selectMovie(item)}/>
                         </div> 
                     </div>
                 ))}

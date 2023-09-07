@@ -3,7 +3,8 @@
     justify-content: center;
 }
 
-h2 {
+.movieDetailsTitle {
+    margin-top: 25px;
     text-align: center;
 }
 
@@ -26,6 +27,7 @@ h2 {
 
 .arrowBack {
     position: absolute;
-    left: 15%;
+    top: 5%;
+    left: 10%;
     font-size: 25px;
 }
