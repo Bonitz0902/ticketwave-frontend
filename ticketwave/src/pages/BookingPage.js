@@ -54,20 +54,6 @@ export const BookingPage = () => {
                                     value: 'SM Manila',
                                     label: 'SM Manila',
                                 }]}/>
-                    <Select defaultValue={"C1"} className={"cinemaDropdown"}
-                            options={[
-                                {
-                                    value: 'C1',
-                                    label: 'C1',
-                                },
-                                {
-                                    value: 'C2',
-                                    label: 'C2',
-                                },
-                                {
-                                    value: 'C3',
-                                    label: 'C3',
-                                }]}/>
                 </div>
                 <div className={"availableDate"}>
                     Date
@@ -85,9 +71,9 @@ export const BookingPage = () => {
                     <br/>
                     <br/>
                     <Radio.Group className={"radio-custom"}>
-                        <Radio value="A">10:00AM - 12:00PM</Radio>
-                        <Radio value="B">01:00PM - 03:00PM</Radio>
-                        <Radio value="C">04:00PM - 05:00PM</Radio>
+                        <Radio value="A">10:00AM - 12:00PM Cinema 1</Radio>
+                        <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
+                        <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
                     </Radio.Group>
                     <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seat</Button></center>
                 </div>
