@@ -74,6 +74,7 @@ const Movies = () => {
                         height: '450px',
                         width: '350px'
                     }}
+                    onClick={() => selectMovie(item.id)}
                 />
             </div>
             ))}
@@ -134,6 +135,7 @@ const Movies = () => {
                         height: '450px',
                         width: '350px'
                     }}
+                    onClick={() => selectMovie(item.id)}
                     />
                 </div>
                 ))}
