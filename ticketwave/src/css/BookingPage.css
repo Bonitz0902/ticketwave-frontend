@@ -82,6 +82,11 @@
     justify-content: center;
 }
 
+.chooseDates {
+    width: 16%;
+    text-align: center;
+}
+
 .availableTimeSlot {
     margin-top: 20px;
     font-weight: bold;
