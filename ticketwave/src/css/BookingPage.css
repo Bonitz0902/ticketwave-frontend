@@ -123,6 +123,7 @@
 .pickSeatButton {
     position: relative;
     margin-top: 20px;
+    background-color: rgb(19,36,38);
 }
 
 .bookingSeat {
@@ -140,13 +141,11 @@
     text-align: right;
 }
 
-.bookingCancel {
+.bookingCancel, .proceedButton {
     margin: 20px;
+    background-color: rgb(19,36,38);
 }
 
-.proceedButton {
-    margin: 20px;
-}
 
 
 
