@@ -3,15 +3,15 @@ import '../css/MovieDetails.css';
 import {ArrowLeftOutlined, StarFilled} from "@ant-design/icons";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 export const MovieDetailPage = () => {
 
-    const movieList = useSelector(state => state.movieSlice.movieSlice);
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate(-1);
+        navigate('/');
     }
 
     const gotoBookingPage = () => {
@@ -20,23 +20,23 @@ export const MovieDetailPage = () => {
 
     return (
         <div className={"movieContainer"}>
+            <NavBar />
             <div className={"movieDetails"}>
                 <ArrowLeftOutlined onClick={goBack} className={"arrowBack"} />
                 {
-                    movieList.filter(movie => selectedMovie === movie.id).map((item) =>
-                        <div key={item.id}>
-                            <h2>{item.movieTitle}</h2>
-                            <center>
-                                <Image preview={false} width={"250px"} src={item.imageUrl} className={"image"} />
-                                <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookNowBtn"}
+                    <div key={selectedMovie.id}>
+                        <h2 className={"movieDetailsTitle"}>{selectedMovie.movieTitle}</h2>
+                        <center>
+                            <Image preview={false} width={"250px"} src={selectedMovie.imageUrl} className={"image"}/>
+                            <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookNowBtn"}
                                     onClick={gotoBookingPage} size={"large"}> Book Now </Button>
-                                <p className={"movieDescription"}>{item.description}</p>
-                                <p>Rating: {item.rating}/10<StarFilled className={"ratingIcon"} /></p>
-                                <p>Genre: {item.genre}</p>
-                                <p>Director: {item.director}</p>
-                            </center>
-                        </div>
-                    )}
+                            <p className={"movieDescription"}>{selectedMovie.description}</p>
+                            <p>Rating: {selectedMovie.rating}/10<StarFilled className={"ratingIcon"}/></p>
+                            <p>Genre: {selectedMovie.genre}</p>
+                            <p>Director: {selectedMovie.director}</p>
+                        </center>
+                    </div>
+                }
             </div>
         </div>
     );

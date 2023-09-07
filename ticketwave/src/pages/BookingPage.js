@@ -1,15 +1,54 @@
 import './../css/BookingPage.css'
-import ticketwavelogo from "../ticketwavelogo.png";
-import React, {useState} from "react";
-import {UserOutlined} from "@ant-design/icons";
+import React, {useEffect, useState} from "react";
+import {Button, Image, Radio, Select} from "antd";
 import {Image, Select, Radio, Button, Modal} from "antd";
 import {useNavigate} from "react-router-dom";
 import SeatPicker from "../components/SeatPicker"
+import NavBar from "../components/NavBar";
+import {useSelector} from "react-redux";
 
 export const BookingPage = () => {
-    const [seatReserved, setSeatReserved] = useState([]);
-    
+const [seatReserved, setSeatReserved] = useState([]);
+    const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
+    const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
+    const loadCinemas = useSelector(state => state.movieSlice.cinemas);
+    const loadSchedules = useSelector(state => state.movieSlice.movieSchedules);
     const navigate = useNavigate();
+    const [filteredLocations, setFilteredLocations] = useState([]);
+
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+
+    let showingDates = [];
+
+    useEffect(() => {
+        let locations = [];
+        let timeSlot = [];
+        let cinemaName = "";
+        let startTime = "";
+        let endTime = "";
+        loadCinemas.forEach(cinema => {
+            if (cinema.movieId === selectedMovie.id) {
+                loadLocations.forEach(location => {
+                    if (location.locationId === cinema.locationId) {
+                        locations.push({
+                            value: location.locationId,
+                            label: location.locationName
+                        })
+                    }
+                })
+
+                loadSchedules.forEach(schedule => {
+                    if (cinema.cinemaId === schedule.cinemaId) {
+                          timeSlot.push(`${cinema.cinemaName}`)
+                    }
+                })
+            }
+        })
+        setFilteredLocations(locations);
+    }, []);
     const goBack = () => {
         navigate('/movieDetail');
     }
@@ -21,7 +60,15 @@ export const BookingPage = () => {
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
-
+const createDates = () => {
+        let index = 0;
+        while (index < 5) {
+            index += 1;
+            let newDate = date + index
+            newDate = `${month}/${newDate - 1}`;
+            showingDates.push(newDate);
+        }
+    }
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);    
     const showModal = () => {
@@ -42,49 +89,33 @@ export const BookingPage = () => {
 
     return (
         <div className={"bookingContainer"}>
-            <nav className={"bookingNav"}>
-                <img src={ticketwavelogo} alt="TicketWave Logo" className="bookingLogo" />
-                <div className="user-icon">
-                    <UserOutlined />
-                </div>
-            </nav>
+            {createDates()}
+            <NavBar/>
             <div className={"bookingPoster"}>
-                <Image preview={false} src={"https://www.careerguide.com/career/wp-content/uploads/2021/06/AAAABUQCmg3KKkFHVfXa_QGXW-ihQ7JcpYGwyHviLpsrg_5zzLStiFuI1eDQ5XjxnYNPWhP8wWQdS747Fn_LbVDC7U-paLWG.jpg"} className={"bookingImg"}/>
+                <Image preview={false} src={`${selectedMovie.imageUrlLandscape}`} className={"bookingImg"}/>
             </div>
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
-                    The Shawshank Redemption
+                    {selectedMovie.movieTitle}
                 </div>
                 <div className={"bookingPrice"}>
-                    400 PHP
+                    PHP {selectedMovie.price}
                 </div>
                 <div className={"cinemaLocation"}>
                     Cinema
                     <br/>
-                    <Select defaultValue={"SM MOA IMAX THEATER"} className={"locationDropdown"} onChange={handleChange}
-                            options={[
-                                {
-                                    value: 'SM MOA IMAX THEATER',
-                                    label: 'SM MOA IMAX THEATER',
-                                },
-                                {
-                                    value: 'SM Makati',
-                                    label: 'SM Makati',
-                                },
-                                {
-                                    value: 'SM Manila',
-                                    label: 'SM Manila',
-                                }]}/>
+                    <Select defaultValue={"Choose Location"} className={"locationDropdown"}
+                            onChange={handleChange} options={filteredLocations}/>
                 </div>
                 <div className={"availableDate"}>
                     Date
                     <br/>
-                    <Radio.Group onChange={onChangeDate} defaultValue={"a"} className={"schedule"}>
-                        <Radio.Button value="a">09/06</Radio.Button>
-                        <Radio.Button value="b">09/07</Radio.Button>
-                        <Radio.Button value="c">09/08</Radio.Button>
-                        <Radio.Button value="d">09/09</Radio.Button>
-                        <Radio.Button value="e">09/10</Radio.Button>
+                    <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
+                        {
+                            showingDates.map((date, index) => {
+                                return <Radio.Button value={index} className={"chooseDates"}>{date}</Radio.Button>
+                            })
+                        }
                     </Radio.Group>
                 </div>
                 <div className={"availableTimeSlot"}>
@@ -111,8 +142,10 @@ export const BookingPage = () => {
                     Amount: 1200 PHP
                 </div>
                 <center>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack} size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} size={"large"}>Proceed</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
+                            size={"large"}>Cancel</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"}
+                            size={"large"}>Proceed</Button>
                 </center>
                 <Modal
                     title="Seat Reservation"
