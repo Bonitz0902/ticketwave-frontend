@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useApis } from "../hooks/useHooks";
+import { ArrowRightOutlined } from '@ant-design/icons';
 import '../App.css';
 
 const Movies = () => {
@@ -70,10 +71,10 @@ const Movies = () => {
               <div className="title-content">
                 <div className="title-movie">
                   <span id="movies"
-                  style={{ display: 'inline-block', paddingRight: '80px' }}>MOVIES</span>
+                  style={{ position: 'absolute', display: 'inline-block', paddingRight: '80px' }}>MOVIES</span>
                   <span id="see" 
                    onClick={() => seeAllPage()}
-                  style={{ display: 'inline-block' }}>SEE ALL</span>
+                  style={{ display: 'inline-block' }}>SEE ALL <ArrowRightOutlined /></span>
                 </div>
               </div>
             </div>
