@@ -12,3 +12,7 @@ export const getAllCinemasByLocationAndMovie = (locationId, movieId) => {
 export const getAllCinema = () => {
     return api.get('/cinemas');
 }
+
+export const getMovieSchedule = () => {
+    return api.get('/movie-schedules');
+}
