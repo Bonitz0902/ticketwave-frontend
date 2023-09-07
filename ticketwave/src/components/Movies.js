@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedMovie } from '../components/movieSlice';
 import '../css/Movies.css';
 import { useNavigate } from "react-router-dom";
+// import Carousel from "react-multi-carousel";
 import { Carousel } from 'antd';
 import "react-multi-carousel/lib/styles.css";
 import Slider from "react-slick";
@@ -62,6 +63,7 @@ const Movies = () => {
                     className="movie-image-landscape"
                     src={item.imageUrlLandscape}
                     alt={item.title}
+                    onClick={() => selectMovie(item.id)}
                 />
             </div>
             ))}
@@ -85,6 +87,7 @@ const Movies = () => {
                         <div key={index} className="card-pad">
                           <img src={item.imageUrl} onClick={() => seeAllPage()}/>
                         </div>
+                    onClick={() => selectMovie(item.id)}
                     </div>
                 ))}
                 </Slider>

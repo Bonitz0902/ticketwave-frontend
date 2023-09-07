@@ -1,0 +1,150 @@
+.bookingNav {
+    background-color: rgb(19,36,38);
+}
+
+.bookingLogo {
+    width: 75px;
+    padding: 5px;
+}
+
+.bookingImg {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: 15px;
+}
+
+.user-icon {
+    float: right;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.bookingPoster {
+    width: 100%;
+    height: auto;
+}
+
+.bookingImg {
+    padding: 0;
+}
+
+.bookingDetailsContainer {
+    width: 90%;
+    margin: auto;
+    line-height: 15px;
+}
+
+.bookingDetails {
+    font-weight: bold;
+    float: left;
+    text-align: left;
+    width: 75%;
+    margin: 0;
+    padding: 0;
+}
+
+.bookingPrice {
+    font-weight: bold;
+    text-align: right;
+}
+
+.arrowBack {
+    margin-top: 20px;
+    margin-left: -30px;
+    position: relative;
+}
+
+.cinemaLocation {
+    margin-top: 20px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.locationDropdown {
+    width: 100%;
+}
+
+.availableDate {
+    margin-top: 20px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.schedule {
+    width: 120%;
+    margin: auto;
+    justify-content: center;
+}
+
+.availableTimeSlot {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.radio-custom .ant-radio-wrapper {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 4px;
+    margin: 1px;
+    width: 100%;
+}
+
+.radio-custom .ant-radio-wrapper-checked {
+    border: 2px solid #1677FF;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.radio-custom .ant-radio {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+}
+
+.radio-custom .ant-radio + * {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.pickSeatButton {
+    position: relative;
+    margin-top: 20px;
+    background-color: rgb(19,36,38);
+}
+
+.bookingSeat {
+    font-weight: bold;
+    float: left;
+    text-align: left;
+    width: 50%;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.finalPrice {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.bookingCancel, .proceedButton {
+    margin: 20px;
+    background-color: rgb(19,36,38);
+}
+
+
+
+
+
+
+
+
+
