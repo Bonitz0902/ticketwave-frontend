@@ -1,15 +1,38 @@
 import './../css/BookingPage.css'
 import ticketwavelogo from "../ticketwavelogo.png";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {UserOutlined} from "@ant-design/icons";
 import {Image, Select, Radio, Button} from "antd";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {selectReducer} from "@mui/base/useSelect/selectReducer";
 
 export const BookingPage = () => {
 
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
+    const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
+    const loadCinemas = useSelector(state => state.movieSlice.cinemas);
     const navigate = useNavigate();
+    const [filteredLocations, setFilteredLocations] = useState([]);
+
+    useEffect(() => {
+        let locations = [];
+        loadCinemas.forEach(cinema => {
+            if(cinema.cinemaId === selectedMovie.id){
+                loadLocations.forEach(location => {
+                    if(location.locationId === cinema.locationId){
+                        locations.push({
+                            value: location.locationId,
+                            label: location.locationName
+                        })
+                    }
+                })
+            }
+        })
+        console.log(loadLocations);
+        console.log(selectedMovie);
+        setFilteredLocations(locations);
+    }, []);
     const goBack = () => {
         navigate('/movieDetail');
     }
@@ -21,6 +44,10 @@ export const BookingPage = () => {
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
+
+    const getOptions = () => {
+
+    }
 
     return (
         <div className={"bookingContainer"}>
@@ -43,20 +70,8 @@ export const BookingPage = () => {
                 <div className={"cinemaLocation"}>
                     Cinema
                     <br/>
-                    <Select defaultValue={"SM MOA IMAX THEATER"} className={"locationDropdown"} onChange={handleChange}
-                            options={[
-                                {
-                                    value: 'SM MOA IMAX THEATER',
-                                    label: 'SM MOA IMAX THEATER',
-                                },
-                                {
-                                    value: 'SM Makati',
-                                    label: 'SM Makati',
-                                },
-                                {
-                                    value: 'SM Manila',
-                                    label: 'SM Manila',
-                                }]}/>
+                    <Select defaultValue={"Choose Location"} className={"locationDropdown"}
+                            onChange={handleChange} options={filteredLocations}/>
                 </div>
                 <div className={"availableDate"}>
                     Date
