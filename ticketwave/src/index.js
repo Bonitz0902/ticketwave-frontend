@@ -14,6 +14,10 @@ import { MovieDetailPage } from './pages/MovieDetailPage';
 import { AboutPage } from './pages/AboutPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { SeeAllPage } from './pages/SeeAllPage';
+import { Transaction } from './pages/Transaction';
+import GcashPayment from './pages/GcashPayment';
+import GcashReceipt from './pages/GcashReceipt';
+import BankTransfer from './pages/BankTransfer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -54,6 +58,23 @@ const router = createBrowserRouter([
   {
     path: "/seeAll",
     element: <SeeAllPage />
+  },
+  {
+    path: "/transaction",
+    element: <Transaction />
+  },
+
+  {
+    path: "/gcash",
+    element: <GcashPayment />
+  },
+  {
+    path: "/gcashReceipt",
+    element: <GcashReceipt />
+  },
+  {
+    path: "/bankTransfer",
+    element: <BankTransfer />
   },
 ]);
 
