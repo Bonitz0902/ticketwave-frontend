@@ -133,7 +133,7 @@ export const BookingPage = () => {
                         )}
                     </Radio.Group>
                     <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"}
-                                    size={"large"}>Choose seat</Button></center>
+                                    size={"large"}>Choose seat</Button>
                         <span id="paymentBook">PAYMENT</span>
                         <Button style={{borderRadius: "20px"}} type={"primary"} 
                         onClick={gcash}
