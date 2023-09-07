@@ -1,8 +1,8 @@
 import './../css/BookingPage.css'
 import ticketwavelogo from "../ticketwavelogo.png";
 import React from "react";
-import {ArrowLeftOutlined, UserOutlined} from "@ant-design/icons";
-import {Image, Select, Radio} from "antd";
+import {UserOutlined} from "@ant-design/icons";
+import {Image, Select, Radio, Button} from "antd";
 import {useNavigate} from "react-router-dom";
 
 export const BookingPage = () => {
@@ -23,31 +23,54 @@ export const BookingPage = () => {
                     <UserOutlined />
                 </div>
             </nav>
-            <ArrowLeftOutlined onClick={goBack} className={"arrowBack"} />
             <div className={"bookingPoster"}>
-                <Image preview={false} width={300} src={"https://c8.alamy.com/comp/2JH2MYR/robbinsposter-the-shawshank-redemption-1994-2JH2MYR.jpg"} className={"bookingImg"}/>
+                <Image preview={false} src={"https://www.careerguide.com/career/wp-content/uploads/2021/06/AAAABUQCmg3KKkFHVfXa_QGXW-ihQ7JcpYGwyHviLpsrg_5zzLStiFuI1eDQ5XjxnYNPWhP8wWQdS747Fn_LbVDC7U-paLWG.jpg"} className={"bookingImg"}/>
             </div>
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
                     The Shawshank Redemption
                 </div>
                 <div className={"bookingPrice"}>
-                    $300
+                    400 PHP
                 </div>
                 <div className={"cinemaLocation"}>
                     Cinema
-                    <Select defaultValue={"Cinema 1"} className={"cinemaDropdown"}/>
+                    <br/>
+                    <Select defaultValue={"SM MOA IMAX THEATER"} className={"locationDropdown"}/>
+                    <Select defaultValue={"C1"} className={"cinemaDropdown"}/>
                 </div>
                 <div className={"availableDate"}>
                     Date
+                    <br/>
                     <Radio.Group onChange={onChangeDate} defaultValue={"a"} className={"schedule"}>
-                        <Radio.Button value="a">Monday</Radio.Button>
-                        <Radio.Button value="b">Tuesday</Radio.Button>
-                        <Radio.Button value="c">Wednesday</Radio.Button>
-                        <Radio.Button value="d">Thursday</Radio.Button>
-                        <Radio.Button value="d">Friday</Radio.Button>
+                        <Radio.Button value="a">09/06</Radio.Button>
+                        <Radio.Button value="b">09/07</Radio.Button>
+                        <Radio.Button value="c">09/08</Radio.Button>
+                        <Radio.Button value="d">09/09</Radio.Button>
+                        <Radio.Button value="e">09/10</Radio.Button>
                     </Radio.Group>
                 </div>
+                <div className={"availableTimeSlot"}>
+                    Available Time Slot
+                    <br/>
+                    <br/>
+                    <Radio.Group className={"radio-custom"}>
+                        <Radio value="A">10:00AM - 12:00PM</Radio>
+                        <Radio value="B">01:00PM - 03:00PM</Radio>
+                        <Radio value="C">04:00PM - 05:00PM</Radio>
+                    </Radio.Group>
+                    <center><Button type={"primary"} className={"pickSeatButton"}>Choose seats</Button></center>
+                </div>
+                <div className={"bookingSeat"}>
+                    3 seat/s: C4, C5, C6
+                </div>
+                <div className={"finalPrice"}>
+                    Amount: 1200 PHP
+                </div>
+                <center>
+                    <Button type={"primary"} className={"bookingCancel"} onClick={goBack}>Cancel</Button>
+                    <Button type={"primary"} className={"proceedButton"}>Proceed</Button>
+                </center>
             </div>
         </div>
     );
