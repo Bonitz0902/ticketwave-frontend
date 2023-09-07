@@ -1,0 +1,31 @@
+.movies-reco {
+    height: 100%;
+    background: rgb(19, 36, 38);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; 
+}
+.card-pad {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 4px;
+}
+
+.card_content img {
+    max-width: 100%; 
+    max-height: 100%;
+}
+
+.goBack {
+    padding: 10px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 375px) {
+    .card_content img {
+        width: 115px; 
+        max-height: 150px; 
+    }
+}
