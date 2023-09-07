@@ -102,7 +102,7 @@
 }
 
 .radio-custom .ant-radio-wrapper-checked {
-    border: 2px solid rgb(19,36,38);
+    border: 2px solid #1677FF;
     border-radius: 8px;
     padding: 4px;
 }
