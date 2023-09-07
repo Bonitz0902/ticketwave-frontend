@@ -15,6 +15,10 @@ export const BookingPage = () => {
         console.log(`radio checked:${e.target.value}`);
     }
 
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
+    };
+
     return (
         <div className={"bookingContainer"}>
             <nav className={"bookingNav"}>
@@ -36,8 +40,34 @@ export const BookingPage = () => {
                 <div className={"cinemaLocation"}>
                     Cinema
                     <br/>
-                    <Select defaultValue={"SM MOA IMAX THEATER"} className={"locationDropdown"}/>
-                    <Select defaultValue={"C1"} className={"cinemaDropdown"}/>
+                    <Select defaultValue={"SM MOA IMAX THEATER"} className={"locationDropdown"} onChange={handleChange}
+                            options={[
+                                {
+                                    value: 'SM MOA IMAX THEATER',
+                                    label: 'SM MOA IMAX THEATER',
+                                },
+                                {
+                                    value: 'SM Makati',
+                                    label: 'SM Makati',
+                                },
+                                {
+                                    value: 'SM Manila',
+                                    label: 'SM Manila',
+                                }]}/>
+                    <Select defaultValue={"C1"} className={"cinemaDropdown"}
+                            options={[
+                                {
+                                    value: 'C1',
+                                    label: 'C1',
+                                },
+                                {
+                                    value: 'C2',
+                                    label: 'C2',
+                                },
+                                {
+                                    value: 'C3',
+                                    label: 'C3',
+                                }]}/>
                 </div>
                 <div className={"availableDate"}>
                     Date
@@ -59,7 +89,7 @@ export const BookingPage = () => {
                         <Radio value="B">01:00PM - 03:00PM</Radio>
                         <Radio value="C">04:00PM - 05:00PM</Radio>
                     </Radio.Group>
-                    <center><Button type={"primary"} className={"pickSeatButton"}>Choose seats</Button></center>
+                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seats</Button></center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6
@@ -68,8 +98,8 @@ export const BookingPage = () => {
                     Amount: 1200 PHP
                 </div>
                 <center>
-                    <Button type={"primary"} className={"bookingCancel"} onClick={goBack}>Cancel</Button>
-                    <Button type={"primary"} className={"proceedButton"}>Proceed</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack} size={"large"}>Cancel</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} size={"large"}>Proceed</Button>
                 </center>
             </div>
         </div>
