@@ -1,7 +1,6 @@
 import './../css/BookingPage.css'
 import React, {useEffect, useState} from "react";
-import {Button, Image, Radio, Select} from "antd";
-import {Image, Select, Radio, Button, Modal} from "antd";
+import {Button, Image, Radio, Select,  Modal} from "antd";
 import {useNavigate} from "react-router-dom";
 import SeatPicker from "../components/SeatPicker"
 import NavBar from "../components/NavBar";
