@@ -6,11 +6,12 @@ import {useApis} from "./hooks/useHooks";
 import {useEffect} from "react";
 
 function App() {
-    const {loadAllCinemas, loadAllLocations} = useApis();
+    const {loadAllCinemas, loadAllLocations, loadAllSchedules} = useApis();
     useEffect(() => {
         const fetchData = async () => {
             loadAllCinemas();
             loadAllLocations();
+            loadAllSchedules();
         }
         fetchData();
     }, []);
