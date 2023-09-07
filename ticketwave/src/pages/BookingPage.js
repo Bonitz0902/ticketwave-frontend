@@ -18,7 +18,7 @@ export const BookingPage = () => {
     useEffect(() => {
         let locations = [];
         loadCinemas.forEach(cinema => {
-            if(cinema.cinemaId === selectedMovie.id){
+            if(cinema.movieId === selectedMovie.id){
                 loadLocations.forEach(location => {
                     if(location.locationId === cinema.locationId){
                         locations.push({
