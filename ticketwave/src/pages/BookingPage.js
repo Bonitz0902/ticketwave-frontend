@@ -4,8 +4,11 @@ import React from "react";
 import {UserOutlined} from "@ant-design/icons";
 import {Image, Select, Radio, Button} from "antd";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export const BookingPage = () => {
+
+    const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
     const navigate = useNavigate();
     const goBack = () => {
         navigate('/movieDetail');
@@ -28,11 +31,11 @@ export const BookingPage = () => {
                 </div>
             </nav>
             <div className={"bookingPoster"}>
-                <Image preview={false} src={"https://www.careerguide.com/career/wp-content/uploads/2021/06/AAAABUQCmg3KKkFHVfXa_QGXW-ihQ7JcpYGwyHviLpsrg_5zzLStiFuI1eDQ5XjxnYNPWhP8wWQdS747Fn_LbVDC7U-paLWG.jpg"} className={"bookingImg"}/>
+                <Image preview={false} src={`${selectedMovie.imageUrlLandscape}`} className={"bookingImg"}/>
             </div>
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
-                    The Shawshank Redemption
+                    {selectedMovie.movieTitle}
                 </div>
                 <div className={"bookingPrice"}>
                     400 PHP
