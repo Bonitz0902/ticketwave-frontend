@@ -3,7 +3,7 @@ import { useSelector,  useDispatch} from 'react-redux';
 import { setSelectedMovie } from '../components/movieSlice';
 import '../css/SeeAllPage.css';
 import Slider from "react-slick";
-import { LeftCircleOutlined } from '@ant-design/icons';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
 
 export const SeeAllPage = () => {
@@ -50,7 +50,7 @@ export const SeeAllPage = () => {
             <nav>
                 <SearchMovie/>
             </nav>
-            <LeftCircleOutlined className="goBack" onClick={() => goBack()}/>
+            <ArrowLeftOutlined className="goBack" onClick={() => goBack()}/>
             <div className="movies-reco">
             <Slider {...settings}>
               {movieList.map((item, index) => (
