@@ -13,6 +13,8 @@ export const BookingPage = () => {
     const loadSchedules = useSelector(state => state.movieSlice.movieSchedules);
     const navigate = useNavigate();
     const [filteredLocations, setFilteredLocations] = useState([]);
+    const [availableTs, setAvailableTs] = useState([]);
+    const [cinemaLoc, setCinemaLoc] = useState(0);
 
     let newDate = new Date();
     let date = newDate.getDate();
@@ -20,13 +22,11 @@ export const BookingPage = () => {
     let year = newDate.getFullYear();
 
     let showingDates = [];
+    let timeSlot = [];
 
     useEffect(() => {
         let locations = [];
-        let timeSlot = [];
-        let cinemaName = "";
-        let startTime = "";
-        let endTime = "";
+
         loadCinemas.forEach(cinema => {
             if (cinema.movieId === selectedMovie.id) {
                 loadLocations.forEach(location => {
@@ -39,11 +39,16 @@ export const BookingPage = () => {
                 })
 
                 loadSchedules.forEach(schedule => {
-                    if (cinema.cinemaId === schedule.cinemaId) {
-                          timeSlot.push(`${cinema.cinemaName}`)
+                    if (cinema.cinemaId === schedule.cinema.cinemaId) {
+                        timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
+                        console.log(timeSlot);
+                        setAvailableTs(timeSlot);
                     }
                 })
             }
+
+            console.log(loadSchedules);
+            console.log('test');
         })
         setFilteredLocations(locations);
     }, []);
@@ -56,7 +61,9 @@ export const BookingPage = () => {
     }
 
     const handleChange = (value) => {
+        setCinemaLoc(value);
         console.log(`selected ${value}`);
+        console.log(value);
     };
 
     const createDates = () => {
@@ -105,9 +112,12 @@ export const BookingPage = () => {
                     <br/>
                     <br/>
                     <Radio.Group className={"radio-custom"}>
-                        <Radio value="A">10:00AM - 12:00PM Cinema 1</Radio>
-                        <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
-                        <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
+                        {
+                            loadSchedules.filter(sched => sched.cinema.cinemaId === cinemaLoc).map((schedCinema, index) =>
+                            <div key={index}>
+                                <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
+                            </div>
+                        )}
                     </Radio.Group>
                     <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"}
                                     size={"large"}>Choose seat</Button></center>
