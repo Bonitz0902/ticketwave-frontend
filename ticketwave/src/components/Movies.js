@@ -85,9 +85,8 @@ const Movies = () => {
                 {movieAvailableList.map((item, index) => (
                     <div key={index} className="card_content">
                         <div key={index} className="card-pad">
-                          <img src={item.imageUrl} onClick={() => seeAllPage()}/>
-                        </div>
-                    onClick={() => selectMovie(item.id)}
+                          <img src={item.imageUrl} onClick={() => selectMovie(item.id)}/>
+                        </div> 
                     </div>
                 ))}
                 </Slider>
