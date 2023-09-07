@@ -2,29 +2,38 @@ import { Form, Input, Alert } from 'antd';
 import '../css/LoginAccountPage.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useApis } from '../hooks/useHooks';
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 export const LoginAccountPage = () => {
     const navigate = useNavigate();
+    const { loadAccount } = useApis();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+    const account = useSelector((state) => state.loginSlice.loginAccount);
+
+    loadAccount(email, password);
 
     const goToSignUp = () => {
         navigate("/createAccount");
     }
 
-    const signIn = () => {
-        if (!email || email.trim() === ""
-            || !password || password.trim() === "") {
-            setShowAlert(true);
+    const invalidInput = !email.trim() || !password.trim();
 
-        } else {
-            setShowAlert(false);
+    const signIn = () => {
+        if (account === email && !invalidInput) {
+            navigate("/");
+        }
+        if (account !== email || invalidInput) {
+            setShowAlert(true);
         }
     }
 
     return (
         <>
+            <ArrowLeftOutlined onClick={() => navigate(-1)} className={"arrowBack"} />
             <div className="container">
                 <div className='container-form'>
                     <div className='login-form-title'>
@@ -34,9 +43,7 @@ export const LoginAccountPage = () => {
                         className='login-form'
                         initialValues={{ remember: true }}
                     >
-                        <Form.Item
-                            name="email"
-                        >
+                        <Form.Item>
                             <Input
                                 className='login-form-inputs'
                                 placeholder='Email'
@@ -44,9 +51,7 @@ export const LoginAccountPage = () => {
                                 onChange={(event) => setEmail(event.target.value)}
                             />
                         </Form.Item>
-                        <Form.Item
-                            name="password"
-                        >
+                        <Form.Item>
                             <Input.Password
                                 className='login-form-inputs'
                                 type='password'
@@ -70,10 +75,7 @@ export const LoginAccountPage = () => {
                                 showIcon />}
                         <Form.Item>
                             <button
-                                type='primary'
-                                htmlType='submit'
                                 className='login-form-button'
-                                block
                                 onClick={() => signIn()}
                             >
                                 Sign in
