@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.parent {
+    align-items: center;
+}
+
+.ticketContainer {
+    width: 300px;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    border: 2px solid black; 
+    flex-direction: column;
+    background: rgb(231, 231, 231);
+}
+
+.ticketBody {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    padding-left: 5px;
+}
+
+.ticket-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.arrowBack {
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+#title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#total {
+    padding-left: 100px;
+}
+
+#location {
+    font-weight: bold;
+}
+
+#sched {
+    font-weight: bold;
+}
+
+#displayImage {
+    width:300px;
+    height: 165px;
+}
+
+#qrCode {
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 161px;
+}
+
+.ticketCode {
+    position: absolute;
+    margin-top: 135px;
+    margin-left: 170px;
+}

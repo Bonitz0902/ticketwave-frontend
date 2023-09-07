@@ -14,6 +14,8 @@ const [seatReserved, setSeatReserved] = useState([]);
     const loadSchedules = useSelector(state => state.movieSlice.movieSchedules);
     const navigate = useNavigate();
     const [filteredLocations, setFilteredLocations] = useState([]);
+    const [availableTs, setAvailableTs] = useState([]);
+    const [cinemaLoc, setCinemaLoc] = useState(0);
 
     let newDate = new Date();
     let date = newDate.getDate();
@@ -21,13 +23,11 @@ const [seatReserved, setSeatReserved] = useState([]);
     let year = newDate.getFullYear();
 
     let showingDates = [];
+    let timeSlot = [];
 
     useEffect(() => {
         let locations = [];
-        let timeSlot = [];
-        let cinemaName = "";
-        let startTime = "";
-        let endTime = "";
+
         loadCinemas.forEach(cinema => {
             if (cinema.movieId === selectedMovie.id) {
                 loadLocations.forEach(location => {
@@ -40,11 +40,16 @@ const [seatReserved, setSeatReserved] = useState([]);
                 })
 
                 loadSchedules.forEach(schedule => {
-                    if (cinema.cinemaId === schedule.cinemaId) {
-                          timeSlot.push(`${cinema.cinemaName}`)
+                    if (cinema.cinemaId === schedule.cinema.cinemaId) {
+                        timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
+                        console.log(timeSlot);
+                        setAvailableTs(timeSlot);
                     }
                 })
             }
+
+            console.log(loadSchedules);
+            console.log('test');
         })
         setFilteredLocations(locations);
     }, []);
@@ -52,12 +57,27 @@ const [seatReserved, setSeatReserved] = useState([]);
         navigate('/movieDetail');
     }
 
+    const gcash = () => {
+        navigate('/gcash');
+    }
+
+    const bdo = () => {
+        navigate('/bankTransfer');
+    }
+
+    const proceedReceipt = () => {
+        navigate('/transaction');
+    }
+
+
     const onChangeDate = (e) => {
         console.log(`radio checked:${e.target.value}`);
     }
 
     const handleChange = (value) => {
+        setCinemaLoc(value);
         console.log(`selected ${value}`);
+        console.log(value);
     };
 const createDates = () => {
         let index = 0;
@@ -122,17 +142,25 @@ const createDates = () => {
                     <br/>
                     <br/>
                     <Radio.Group className={"radio-custom"}>
-                        <Radio value="A">10:00AM - 12:00PM Cinema 1</Radio>
-                        <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
-                        <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
+                        {
+                            loadSchedules.filter(sched => sched.cinema.cinemaId === cinemaLoc).map((schedCinema, index) =>
+                            <div key={index}>
+                                <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
+                            </div>
+                        )}
                     </Radio.Group>
                     <center><Button 
-                                style={{borderRadius: "20px"}} 
-                                type={"primary"} 
-                                className={"pickSeatButton"} 
-                                onClick={showModal}
-                                size={"large"}>Choose Seat/s
-                            </Button></center>
+                                    size={"large"}>Choose seat</Button>
+                        <span id="paymentBook">PAYMENT</span>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={gcash}
+                        className={"gcashButton"} 
+                        size={"large"}>GCASH</Button>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={bdo}
+                        className={"bankButton"} 
+                        size={"large"}>BDO</Button>
+                    </center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6
