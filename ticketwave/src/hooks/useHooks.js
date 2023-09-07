@@ -1,7 +1,7 @@
 import * as dashboardApi from "../api/dashboardApi";
 import * as loginApi from "../api/loginApi";
 import {useDispatch} from 'react-redux';
-import {resetAllMovie, resetMovie, setSelectedMovie, loadLocations, loadCinemas} from '../components/movieSlice';
+import {resetAllMovie, resetMovie, setSelectedMovie, loadLocations, loadCinemas, loadSchedules} from '../components/movieSlice';
 import { resetLogin, accountLogin } from '../components/loginSlice';
 import * as bookingApi from "../api/bookingApi";
 
@@ -48,6 +48,11 @@ export const useApis = () => {
         dispatch(loadCinemas(response.data))
     }
 
+    async function loadAllSchedules() {
+        const response = await bookingApi.getMovieSchedule();
+        dispatch(loadSchedules(response.data))
+    }
+
     return {
         loadAllMovies,
         loadAllAvailableMovies,
@@ -55,6 +60,7 @@ export const useApis = () => {
         loadAccount,
         loadAllCinemasByLocationAndMovie,
         loadAllLocations,
-        loadAllCinemas
+        loadAllCinemas,
+        loadAllSchedules
     };
 }
