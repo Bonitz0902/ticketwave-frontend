@@ -10,7 +10,7 @@ export const MovieDetailPage = () => {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate('/');
+        navigate(-1);
     }
 
     const gotoBookingPage = () => {
@@ -20,7 +20,7 @@ export const MovieDetailPage = () => {
     return (
         <div className={"movieContainer"}>
             <div className={"movieDetails"}>
-                <ArrowLeftOutlined onClick={goBack} className={"arrowBack"}/>
+                <ArrowLeftOutlined onClick={goBack} className={"arrowBack"} />
                 {
                     <div key={selectedMovie.id}>
                         <h2>{selectedMovie.movieTitle}</h2>
