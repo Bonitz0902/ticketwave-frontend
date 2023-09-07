@@ -1,21 +1,32 @@
 import './../css/BookingPage.css'
-import ticketwavelogo from "../ticketwavelogo.png";
 import React, {useEffect, useState} from "react";
-import {UserOutlined} from "@ant-design/icons";
 import {Button, Image, Radio, Select} from "antd";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import NavBar from "../components/NavBar";
 
 export const BookingPage = () => {
 
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
     const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
     const loadCinemas = useSelector(state => state.movieSlice.cinemas);
+    const loadSchedules = useSelector(state => state.movieSlice.movieSchedules);
     const navigate = useNavigate();
     const [filteredLocations, setFilteredLocations] = useState([]);
 
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+
+    let showingDates = [];
+
     useEffect(() => {
         let locations = [];
+        let timeSlot = [];
+        let cinemaName = "";
+        let startTime = "";
+        let endTime = "";
         loadCinemas.forEach(cinema => {
             if (cinema.movieId === selectedMovie.id) {
                 loadLocations.forEach(location => {
@@ -26,10 +37,14 @@ export const BookingPage = () => {
                         })
                     }
                 })
+
+                loadSchedules.forEach(schedule => {
+                    if (cinema.cinemaId === schedule.cinemaId) {
+                          timeSlot.push(`${cinema.cinemaName}`)
+                    }
+                })
             }
         })
-        console.log(loadLocations);
-        console.log(selectedMovie);
         setFilteredLocations(locations);
     }, []);
     const goBack = () => {
@@ -44,18 +59,20 @@ export const BookingPage = () => {
         console.log(`selected ${value}`);
     };
 
-    const getOptions = () => {
-
+    const createDates = () => {
+        let index = 0;
+        while (index < 5) {
+            index += 1;
+            let newDate = date + index
+            newDate = `${month}/${newDate - 1}`;
+            showingDates.push(newDate);
+        }
     }
 
     return (
         <div className={"bookingContainer"}>
-            <nav className={"bookingNav"}>
-                <img src={ticketwavelogo} alt="TicketWave Logo" className="bookingLogo"/>
-                <div className="user-icon">
-                    <UserOutlined/>
-                </div>
-            </nav>
+            {createDates()}
+            <NavBar/>
             <div className={"bookingPoster"}>
                 <Image preview={false} src={`${selectedMovie.imageUrlLandscape}`} className={"bookingImg"}/>
             </div>
@@ -64,7 +81,7 @@ export const BookingPage = () => {
                     {selectedMovie.movieTitle}
                 </div>
                 <div className={"bookingPrice"}>
-                    400 PHP
+                    PHP {selectedMovie.price}
                 </div>
                 <div className={"cinemaLocation"}>
                     Cinema
@@ -75,12 +92,12 @@ export const BookingPage = () => {
                 <div className={"availableDate"}>
                     Date
                     <br/>
-                    <Radio.Group onChange={onChangeDate} defaultValue={"a"} className={"schedule"}>
-                        <Radio.Button value="a">09/06</Radio.Button>
-                        <Radio.Button value="b">09/07</Radio.Button>
-                        <Radio.Button value="c">09/08</Radio.Button>
-                        <Radio.Button value="d">09/09</Radio.Button>
-                        <Radio.Button value="e">09/10</Radio.Button>
+                    <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
+                        {
+                            showingDates.map((date, index) => {
+                                return <Radio.Button value={index} className={"chooseDates"}>{date}</Radio.Button>
+                            })
+                        }
                     </Radio.Group>
                 </div>
                 <div className={"availableTimeSlot"}>
