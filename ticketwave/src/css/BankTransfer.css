@@ -1,0 +1,98 @@
+#displayImage {
+    width:300px;
+    height: 155px;
+}
+
+.bankContainer {
+    position: absolute;
+    font-weight: bold;
+    color: rgb(185, 185, 185);
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    margin-top: -20px;
+    margin-left: 17px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 20px 20px 20px 20px;
+    height: 240px;   
+}
+
+.bankBody {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#accountName {
+    width: 90%;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid rgb(137, 151, 155);
+    transition: border-color 150ms ease-in-out 0s;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+    :hover{
+        box-shadow: rgb(231 238 236) 0px 0px 0px 3px;
+    }
+
+}
+
+#accountNum {
+    width: 90%;
+    height: 36px;
+    margin-top: 10px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid rgb(137, 151, 155);
+    transition: border-color 150ms ease-in-out 0s;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+    :hover{
+        box-shadow: rgb(231 238 236) 0px 0px 0px 3px;
+    }
+}
+
+.continue {
+    margin-top: 15px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 16px;
+    background: rgb(0,113,186);
+    font-weight: bolder;
+    color: white;
+    border: 2px solid transparent;
+    height: 100px;
+    width: 200px;
+}
+
+.cancel {
+    margin-top: 5px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bolder;
+    background: white;
+    color: rgb(80, 80, 80);;
+    border: 2px solid rgb(98, 192, 255);
+    height: 100px;
+    width: 200px;
+}
