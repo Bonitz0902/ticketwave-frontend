@@ -11,6 +11,14 @@ export const BookingPage = () => {
         navigate('/movieDetail');
     }
 
+    const gcash = () => {
+        navigate('/gcash');
+    }
+
+    const bdo = () => {
+        navigate('/bankTransfer');
+    }
+
     const onChangeDate = (e) => {
         console.log(`radio checked:${e.target.value}`);
     }
@@ -75,7 +83,18 @@ export const BookingPage = () => {
                         <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
                         <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
                     </Radio.Group>
-                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seat</Button></center>
+                    <center>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seat</Button>
+                        <span id="paymentBook">PAYMENT</span>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={gcash}
+                        className={"gcashButton"} 
+                        size={"large"}>GCASH</Button>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={bdo}
+                        className={"bankButton"} 
+                        size={"large"}>BDO</Button>
+                    </center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6

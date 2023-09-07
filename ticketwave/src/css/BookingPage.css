@@ -120,6 +120,33 @@
     background-color: rgb(19,36,38);
 }
 
+#paymentBook {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 70px;
+
+}
+
+.gcashButton {
+    color: white;
+    position: relative;
+    margin-top: 25px;
+    background: rgb(0,113,186);
+    margin-left: 30px;
+    border: 0;
+    outline: 0;
+}
+
+.bankButton {
+    color: white;
+    position: relative;
+    margin-top: 20px;
+    background: rgb(11, 80, 207);
+    margin-left: 5px;
+    border: 0;
+    outline: 0;
+}
+
 .bookingSeat {
     font-weight: bold;
     float: left;
