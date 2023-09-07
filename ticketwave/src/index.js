@@ -13,6 +13,7 @@ import { LoginAccountPage } from './pages/LoginAccountPage';
 import { MovieDetailPage } from './pages/MovieDetailPage';
 import { AboutPage } from './pages/AboutPage';
 import { ErrorPage } from './pages/ErrorPage';
+import { SeeAllPage } from './pages/SeeAllPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/movieDetail",
     element: <MovieDetailPage />
+  },
+  {
+    path: "/seeAll",
+    element: <SeeAllPage />
   },
 ]);
 
