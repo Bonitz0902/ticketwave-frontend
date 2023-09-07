@@ -19,6 +19,11 @@ export const BookingPage = () => {
         navigate('/bankTransfer');
     }
 
+    const proceedReceipt = () => {
+        navigate('/transaction');
+    }
+
+
     const onChangeDate = (e) => {
         console.log(`radio checked:${e.target.value}`);
     }
@@ -104,7 +109,7 @@ export const BookingPage = () => {
                 </div>
                 <center>
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack} size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} size={"large"}>Proceed</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} onClick={proceedReceipt} size={"large"}>Proceed</Button>
                 </center>
             </div>
         </div>
