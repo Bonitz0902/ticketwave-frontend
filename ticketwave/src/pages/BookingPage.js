@@ -2,10 +2,9 @@ import './../css/BookingPage.css'
 import ticketwavelogo from "../ticketwavelogo.png";
 import React, {useEffect, useState} from "react";
 import {UserOutlined} from "@ant-design/icons";
-import {Image, Select, Radio, Button} from "antd";
+import {Button, Image, Radio, Select} from "antd";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {selectReducer} from "@mui/base/useSelect/selectReducer";
 
 export const BookingPage = () => {
 
@@ -18,9 +17,9 @@ export const BookingPage = () => {
     useEffect(() => {
         let locations = [];
         loadCinemas.forEach(cinema => {
-            if(cinema.movieId === selectedMovie.id){
+            if (cinema.movieId === selectedMovie.id) {
                 loadLocations.forEach(location => {
-                    if(location.locationId === cinema.locationId){
+                    if (location.locationId === cinema.locationId) {
                         locations.push({
                             value: location.locationId,
                             label: location.locationName
@@ -52,9 +51,9 @@ export const BookingPage = () => {
     return (
         <div className={"bookingContainer"}>
             <nav className={"bookingNav"}>
-                <img src={ticketwavelogo} alt="TicketWave Logo" className="bookingLogo" />
+                <img src={ticketwavelogo} alt="TicketWave Logo" className="bookingLogo"/>
                 <div className="user-icon">
-                    <UserOutlined />
+                    <UserOutlined/>
                 </div>
             </nav>
             <div className={"bookingPoster"}>
@@ -93,7 +92,8 @@ export const BookingPage = () => {
                         <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
                         <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
                     </Radio.Group>
-                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seat</Button></center>
+                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"}
+                                    size={"large"}>Choose seat</Button></center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6
@@ -102,8 +102,10 @@ export const BookingPage = () => {
                     Amount: 1200 PHP
                 </div>
                 <center>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack} size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} size={"large"}>Proceed</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
+                            size={"large"}>Cancel</Button>
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"}
+                            size={"large"}>Proceed</Button>
                 </center>
             </div>
         </div>
