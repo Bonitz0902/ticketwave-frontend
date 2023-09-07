@@ -1,5 +1,6 @@
 import SearchMovie from '../components/SearchMovie';
-import { useSelector } from 'react-redux';
+import { useSelector,  useDispatch} from 'react-redux';
+import { setSelectedMovie } from '../components/movieSlice';
 import '../css/SeeAllPage.css';
 import Slider from "react-slick";
 import { LeftCircleOutlined } from '@ant-design/icons';
@@ -8,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const SeeAllPage = () => {
     const movieList = useSelector((state) => state.movieSlice.movieSlice);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const settings = {
         dots: false, 
@@ -32,6 +34,12 @@ export const SeeAllPage = () => {
         ],
     };
 
+    const selectMovie = (id) => {
+        dispatch(setSelectedMovie(id));
+        navigate('/movieDetail');
+    }
+
+
     const goBack = () => {
        navigate("/");
     }    
@@ -48,7 +56,7 @@ export const SeeAllPage = () => {
               {movieList.map((item, index) => (
                    <div key={index} className="card_content">
                         <div key={index} className="card-pad">
-                            <img src={item.imageUrl}/>
+                            <img src={item.imageUrl} onClick={() => selectMovie(item.id)}/>
                         </div>
                   </div>
               ))}
