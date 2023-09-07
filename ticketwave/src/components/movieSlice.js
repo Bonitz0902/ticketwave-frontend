@@ -5,7 +5,7 @@ const movieSlice = createSlice({
     initialState: {
         movieSlice: [],
         movieAvailable: [],
-        selectedMovie: 0,
+        selectedMovie: null,
     },
     reducers: {
         resetMovie: (state, action) => {
