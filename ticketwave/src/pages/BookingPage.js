@@ -56,6 +56,19 @@ export const BookingPage = () => {
         navigate('/movieDetail');
     }
 
+    const gcash = () => {
+        navigate('/gcash');
+    }
+
+    const bdo = () => {
+        navigate('/bankTransfer');
+    }
+
+    const proceedReceipt = () => {
+        navigate('/transaction');
+    }
+
+
     const onChangeDate = (e) => {
         console.log(`radio checked:${e.target.value}`);
     }
@@ -120,7 +133,17 @@ export const BookingPage = () => {
                         )}
                     </Radio.Group>
                     <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"}
-                                    size={"large"}>Choose seat</Button></center>
+                                    size={"large"}>Choose seat</Button>
+                        <span id="paymentBook">PAYMENT</span>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={gcash}
+                        className={"gcashButton"} 
+                        size={"large"}>GCASH</Button>
+                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        onClick={bdo}
+                        className={"bankButton"} 
+                        size={"large"}>BDO</Button>
+                    </center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6
