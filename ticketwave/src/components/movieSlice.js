@@ -6,6 +6,7 @@ const movieSlice = createSlice({
         movieSlice: [],
         movieAvailable: [],
         selectedMovie: null,
+        cinemaLocations: [],
     },
     reducers: {
         resetMovie: (state, action) => {
@@ -19,9 +20,13 @@ const movieSlice = createSlice({
         setSelectedMovie: (state, action) => {
             state.selectedMovie = action.payload;
         },
+        loadLocations: (state, action) => {
+            state.cinemaLocations = action.payload;
+        }
     }
 });
 
 
-export const {resetMovie, resetAllMovie, setSelectedMovie} = movieSlice.actions;
+export const {resetMovie, resetAllMovie,
+    setSelectedMovie, loadLocations} = movieSlice.actions;
 export default movieSlice.reducer;
