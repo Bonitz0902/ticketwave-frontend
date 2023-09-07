@@ -13,9 +13,7 @@ function App() {
       <nav>
         <SearchMovie />
       </nav>
-
-        {/*<MovieDetailPage />*/}
- 
+      
       <Movies></Movies>
       <Outlet />
     </div>
