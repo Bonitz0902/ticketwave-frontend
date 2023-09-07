@@ -1,11 +1,14 @@
 import './../css/BookingPage.css'
 import ticketwavelogo from "../ticketwavelogo.png";
-import React from "react";
+import React, {useState} from "react";
 import {UserOutlined} from "@ant-design/icons";
-import {Image, Select, Radio, Button} from "antd";
+import {Image, Select, Radio, Button, Modal} from "antd";
 import {useNavigate} from "react-router-dom";
+import SeatPicker from "../components/SeatPicker"
 
 export const BookingPage = () => {
+    const [seatReserved, setSeatReserved] = useState([]);
+    
     const navigate = useNavigate();
     const goBack = () => {
         navigate('/movieDetail');
@@ -18,6 +21,24 @@ export const BookingPage = () => {
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
+
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);    
+    const showModal = () => {
+        setOpen(true);
+  };
+    const handleOk = () => {
+        setConfirmLoading(true);
+        setTimeout(() => {
+        setOpen(false);
+        setConfirmLoading(false);
+        }, 1500);
+    };
+    const handleCancel = () => {
+        console.log('Clicked cancel button');
+        setOpen(false);
+    };
+
 
     return (
         <div className={"bookingContainer"}>
@@ -75,7 +96,13 @@ export const BookingPage = () => {
                         <Radio value="B">01:00PM - 03:00PM Cinema 1</Radio>
                         <Radio value="C">04:00PM - 05:00PM Cinema 1</Radio>
                     </Radio.Group>
-                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"} size={"large"}>Choose seat</Button></center>
+                    <center><Button 
+                                style={{borderRadius: "20px"}} 
+                                type={"primary"} 
+                                className={"pickSeatButton"} 
+                                onClick={showModal}
+                                size={"large"}>Choose Seat/s
+                            </Button></center>
                 </div>
                 <div className={"bookingSeat"}>
                     3 seat/s: C4, C5, C6
@@ -87,6 +114,20 @@ export const BookingPage = () => {
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack} size={"large"}>Cancel</Button>
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} size={"large"}>Proceed</Button>
                 </center>
+                <Modal
+                    title="Seat Reservation"
+                    open={open}
+                    onOk={handleOk}
+                    confirmLoading={confirmLoading}
+                    onCancel={handleCancel}
+                    className=".custom-modal-seat-picker" 
+                    style={{ minWidth: "50%", maxWidth: "80%" }}  
+                    >
+                    <div className="">
+                        <SeatPicker />
+                    </div>
+                </Modal>
+
             </div>
         </div>
     );
