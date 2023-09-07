@@ -171,7 +171,7 @@ const createDates = () => {
                 <center>
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
                             size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"}
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} onClick={proceedReceipt}
                             size={"large"}>Proceed</Button>
                 </center>
                 <Modal
