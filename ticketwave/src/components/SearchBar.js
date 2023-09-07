@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { AutoComplete, Image } from "antd";
-import { SearchOutlined } from '@ant-design/icons';
 import { resetMovie, setSelectedMovie } from '../components/movieSlice';
 import * as dashboardApi from "../api/dashboardApi";
 import '../css/SearchBar.css';
