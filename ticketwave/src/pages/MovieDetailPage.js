@@ -11,7 +11,7 @@ export const MovieDetailPage = () => {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate('/');
+        navigate(-1);
     }
 
     const gotoBookingPage = () => {
@@ -21,17 +21,17 @@ export const MovieDetailPage = () => {
     return (
         <div className={"movieContainer"}>
             <div className={"movieDetails"}>
-                <ArrowLeftOutlined onClick={goBack} className={"arrowBack"}/>
+                <ArrowLeftOutlined onClick={goBack} className={"arrowBack"} />
                 {
                     movieList.filter(movie => selectedMovie === movie.id).map((item) =>
                         <div key={item.id}>
                             <h2>{item.movieTitle}</h2>
                             <center>
-                                <Image preview={false} width={"250px"} src={item.imageUrl} className={"image"}/>
+                                <Image preview={false} width={"250px"} src={item.imageUrl} className={"image"} />
                                 <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookNowBtn"}
-                                        onClick={gotoBookingPage} size={"large"}> Book Now </Button>
+                                    onClick={gotoBookingPage} size={"large"}> Book Now </Button>
                                 <p className={"movieDescription"}>{item.description}</p>
-                                <p>Rating: {item.rating}/10<StarFilled className={"ratingIcon"}/></p>
+                                <p>Rating: {item.rating}/10<StarFilled className={"ratingIcon"} /></p>
                                 <p>Genre: {item.genre}</p>
                                 <p>Director: {item.director}</p>
                             </center>
