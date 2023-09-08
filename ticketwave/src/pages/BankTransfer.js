@@ -63,7 +63,7 @@ const BankTransfer = () => {
             
                 <div className='bankContainer'>
                 <span>Merchant: <span id='merchName'>SIXSOME</span></span>
-                <span>Amount Due: <span id='amountDue'>PHP 865.00</span></span>
+                <span>Amount Due: <span id='amountDue'>PHP 1200</span></span>
 
                 <div className='bankBody'>
                 <input id='accountName' placeholder='Account Name'/>
