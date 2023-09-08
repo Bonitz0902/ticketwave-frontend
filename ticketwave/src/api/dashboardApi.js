@@ -13,6 +13,6 @@ export const getAllAvailableSeats = () => {
 }
 
 export const bookMultipleSeat = (seatIds) => {
-    return api.post('/seating/book', seatIds);
+    return api.post('/seating//book-multiple-seats', seatIds);
 }
 

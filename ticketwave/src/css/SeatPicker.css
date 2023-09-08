@@ -11,6 +11,10 @@ h1.h1Class {
   margin: auto;
 }
 
+.center-text-screen {
+  text-align: center;
+}
+
 .grid td {
   width: 25px;
   height: 15px;
@@ -21,11 +25,11 @@ h1.h1Class {
   margin: 10px;
 }
 
-/* .grid td:hover {
+.grid td:hover {
   cursor: pointer;
   background-color:  rgb(19,36,38);
   color: #fff;
-} */
+}
 
 .reserved {
   background: rgb(19,36,38);

@@ -1,13 +1,17 @@
 import './../css/BookingPage.css'
 import React, {useEffect, useState} from "react";
 import {Button, Image, Radio, Select,  Modal} from "antd";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import SeatPicker from "../components/SeatPicker"
 import NavBar from "../components/NavBar";
 import {useSelector} from "react-redux";
 
+
+
+
 export const BookingPage = () => {
-const [seatReserved, setSeatReserved] = useState([]);
+    const location = useLocation();
+    const { id, seatingNumber } = location.state || {};
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
     const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
     const loadCinemas = useSelector(state => state.movieSlice.cinemas);
@@ -42,14 +46,11 @@ const [seatReserved, setSeatReserved] = useState([]);
                 loadSchedules.forEach(schedule => {
                     if (cinema.cinemaId === schedule.cinema.cinemaId) {
                         timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
-                        console.log(timeSlot);
                         setAvailableTs(timeSlot);
                     }
                 })
             }
 
-            console.log(loadSchedules);
-            console.log('test');
         })
         setFilteredLocations(locations);
     }, []);
@@ -71,13 +72,10 @@ const [seatReserved, setSeatReserved] = useState([]);
 
 
     const onChangeDate = (e) => {
-        console.log(`radio checked:${e.target.value}`);
     }
 
     const handleChange = (value) => {
         setCinemaLoc(value);
-        console.log(`selected ${value}`);
-        console.log(value);
     };
 const createDates = () => {
         let index = 0;
@@ -126,13 +124,13 @@ const createDates = () => {
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
                             onChange={handleChange} options={filteredLocations}/>
                 </div>
-                <div className={"availableDate"}>
+                <div className={"availableDate"} >
                     Date
                     <br/>
                     <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
                         {
                             showingDates.map((date, index) => {
-                                return <Radio.Button value={index} className={"chooseDates"}>{date}</Radio.Button>
+                                return <Radio.Button key={index} value={index} className={"chooseDates"}>{date}</Radio.Button>
                             })
                         }
                     </Radio.Group>
@@ -150,7 +148,12 @@ const createDates = () => {
                         )}
                     </Radio.Group>
                     <center><Button 
-                                    size={"large"}>Choose seat</Button>
+                                style={{borderRadius: "20px"}} 
+                                type={"primary"} 
+                                className={"pickSeatButton"} 
+                                onClick={showModal}
+                                size={"large"}>Choose Seat/s
+                            </Button>
                         <span id="paymentBook">PAYMENT</span>
                         <Button style={{borderRadius: "20px"}} type={"primary"} 
                         onClick={gcash}
@@ -163,7 +166,7 @@ const createDates = () => {
                     </center>
                 </div>
                 <div className={"bookingSeat"}>
-                    3 seat/s: C4, C5, C6
+                     seat/s: C4, C5, C6
                 </div>
                 <div className={"finalPrice"}>
                     Amount: 1200 PHP
@@ -183,6 +186,7 @@ const createDates = () => {
                     className=".custom-modal-seat-picker" 
                     style={{ minWidth: "50%", maxWidth: "80%" }}  
                     >
+                        
                     <div className="">
                         <SeatPicker />
                     </div>

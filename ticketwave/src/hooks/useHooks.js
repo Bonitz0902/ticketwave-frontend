@@ -19,9 +19,13 @@ export const useApis = () => {
         dispatch(resetAllMovie(response.data));
     };
 
-    async function getAllAvailableSeats() {
+    async function getAllSeats() {
         const response = await dashboardApi.getAllAvailableSeats();
         dispatch(resetAllSeat(response.data));
+    }
+    
+    function setSelectedSeats(selectedSeats) {
+        dispatch(setSelectedSeats(selectedSeats));
     }
 
     async function bookMultipleSeat(seats) {
@@ -71,9 +75,10 @@ export const useApis = () => {
         loadAccount,
         loadAllCinemasByLocationAndMovie,
         loadAllLocations,
-        getAllAvailableSeats,
+        getAllSeats,
         bookMultipleSeat,
         loadAllCinemas,
-        loadAllSchedules
+        loadAllSchedules,
+        setSelectedSeats
     };
 }
