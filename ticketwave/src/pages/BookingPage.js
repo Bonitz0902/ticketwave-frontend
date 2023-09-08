@@ -1,5 +1,5 @@
 import './../css/BookingPage.css'
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {Button, Image, Radio, Select,  Modal} from "antd";
 import {useNavigate, useLocation} from "react-router-dom";
 import SeatPicker from "../components/SeatPicker"
@@ -46,7 +46,7 @@ export const BookingPage = () => {
 
                 loadSchedules.forEach(schedule => {
                     if (cinema.cinemaId === schedule.cinema.cinemaId) {
-                        timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
+                        timeSlot.push(`${ schedule.startTime } - ${ schedule.endTime } ${ cinema.cinemaName }`)
                         setAvailableTs(timeSlot);
                     }
                 })
@@ -78,7 +78,7 @@ export const BookingPage = () => {
 
 
     const onChangeDate = (e) => {
-        console.log(`radio checked:${e.target.value}`);
+        console.log(`radio checked:${ e.target.value }`);
     }
 
     const handleChange = (value) => {
@@ -89,7 +89,7 @@ const createDates = () => {
         while (index < 5) {
             index += 1;
             let newDate = date + index
-            newDate = `${month}/${newDate - 1}`;
+            newDate = `${ month }/${ newDate - 1 }`;
             showingDates.push(newDate);
         }
     }
@@ -114,9 +114,9 @@ const createDates = () => {
     return (
         <div className={"bookingContainer"}>
             {createDates()}
-            <NavBar/>
+            <NavBar />
             <div className={"bookingPoster"}>
-                <Image preview={false} src={`${selectedMovie.imageUrlLandscape}`} className={"bookingImg"}/>
+                <Image preview={false} src={`${ selectedMovie.imageUrlLandscape }`} className={"bookingImg"} />
             </div>
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
@@ -128,13 +128,13 @@ const createDates = () => {
                 </div>
                 <div className={"cinemaLocation"}>
                     Cinema Location
-                    <br/>
+                    <br />
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
-                            onChange={handleChange} options={filteredLocations}/>
+                        onChange={handleChange} options={filteredLocations} />
                 </div>
                 <div className={"availableDate"} >
                     Date
-                    <br/>
+                    <br />
                     <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
                         {
                             showingDates.map((date, index) => {
@@ -145,15 +145,15 @@ const createDates = () => {
                 </div>
                 <div className={"availableTimeSlot"}>
                     Available Time Slot
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <Radio.Group className={"radio-custom"}>
                         {
                             loadSchedules.filter(sched => sched.cinema.cinemaId === cinemaLoc).map((schedCinema, index) =>
-                            <div key={index}>
-                                <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
-                            </div>
-                        )}
+                                <div key={index}>
+                                    <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
+                                </div>
+                            )}
                     </Radio.Group>
                     <center>
                         <Button 
@@ -168,16 +168,16 @@ const createDates = () => {
                         <Button style={{borderRadius: "20px",
                                         marginLeft: "40px",
                         }} type={"primary"} 
-                        onClick={gcash}
-                        className={"gcashButton"} 
-                        size={"large"}>GCASH</Button>
+                            onClick={gcash}
+                            className={"gcashButton"}
+                            size={"large"}>GCASH</Button>
                         <Button style={{
                             borderRadius: "20px",
                             marginTop: "5px",
                             marginLeft: "175px"
                         }} type={"primary"} 
-                        onClick={bdo}
-                        className={"bankButton"} 
+                            onClick={bdo}
+                            className={"bankButton"}
                         size={"large"}>BDO debit</Button>
                     </center>
                 </div>
@@ -189,11 +189,11 @@ const createDates = () => {
                 </div>
                 <center>
 
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
-                            size={"large"}>Cancel</Button>
+                    <Button type={"primary"} style={{ borderRadius: "20px" }} className={"bookingCancel"} onClick={goBack}
+                        size={"large"}>Cancel</Button>
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} 
                     onClick={() => proceedReceipt(selectedMovie.imageUrlLandscape, selectedMovie.movieTitle)}
-                            size={"large"}>Proceed</Button>
+                        size={"large"}>Proceed</Button>
                 </center>
                 <Modal
                     title="Seat Reservation"

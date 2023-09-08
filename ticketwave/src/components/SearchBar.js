@@ -28,8 +28,8 @@ export const SearchBar = () => {
         setFilteredMovies(movieList.filter(movies => movies.movieTitle.toLowerCase().includes(value.toLowerCase())));
     }
 
-    const handleClick = (id) => {
-        dispatch(setSelectedMovie(id));
+    const handleClick = (movie) => {
+        dispatch(setSelectedMovie(movie));
         navigate("/movieDetail");
     }
 
@@ -44,8 +44,8 @@ export const SearchBar = () => {
                 >
                     {filteredMovies.map((movie) => (
                         <Option key={movie.id} value={movie.movieTitle}>
-                            <Image preview={false} width={50} src={movie.imageUrl} onClick={() => handleClick(movie.id)} />
-                            <span onClick={() => handleClick(movie.id)}>{movie.movieTitle}</span>
+                            <Image preview={false} width={50} src={movie.imageUrl} onClick={() => handleClick(movie)} />
+                            <span onClick={() => handleClick(movie)}>{movie.movieTitle}</span>
                         </Option>
                     ))}
                 </AutoComplete>
