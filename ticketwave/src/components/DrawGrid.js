@@ -2,6 +2,7 @@ import AvailableList from "./AvailableList";
 import ReservedList from "./ReservedList";
 
 const DrawGrid = (props) => {
+  console.log(props, "Draw Grid Props\n");
   const onClickSeat = (seat) => {
     props.onClickData(seat);
   };
