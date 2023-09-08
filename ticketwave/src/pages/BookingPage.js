@@ -127,7 +127,7 @@ const createDates = () => {
                     PHP {selectedMovie.price}
                 </div>
                 <div className={"cinemaLocation"}>
-                    Cinema
+                    Cinema Location
                     <br/>
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
                             onChange={handleChange} options={filteredLocations}/>
@@ -155,7 +155,9 @@ const createDates = () => {
                             </div>
                         )}
                     </Radio.Group>
-                    <center><Button 
+                    <center>
+                        <Button 
+                                id="pickSeatButton"
                                 style={{borderRadius: "20px"}} 
                                 type={"primary"} 
                                 className={"pickSeatButton"} 
@@ -163,14 +165,20 @@ const createDates = () => {
                                 size={"large"}>Choose Seat/s
                             </Button>
                         <span id="paymentBook">PAYMENT</span>
-                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        <Button style={{borderRadius: "20px",
+                                        marginLeft: "40px",
+                        }} type={"primary"} 
                         onClick={gcash}
                         className={"gcashButton"} 
                         size={"large"}>GCASH</Button>
-                        <Button style={{borderRadius: "20px"}} type={"primary"} 
+                        <Button style={{
+                            borderRadius: "20px",
+                            marginTop: "5px",
+                            marginLeft: "175px"
+                        }} type={"primary"} 
                         onClick={bdo}
                         className={"bankButton"} 
-                        size={"large"}>BDO</Button>
+                        size={"large"}>BDO debit</Button>
                     </center>
                 </div>
                 <div className={"bookingSeat"}>

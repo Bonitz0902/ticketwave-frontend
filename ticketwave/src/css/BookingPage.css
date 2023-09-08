@@ -125,10 +125,15 @@
     background-color: rgb(19,36,38);
 }
 
+#pickSeatButton{
+    position: relative;
+
+}
+
 #paymentBook {
     position: absolute;
     margin-top: 5px;
-    margin-left: 70px;
+    margin-left: 45px;
 
 }
 
@@ -137,17 +142,18 @@
     position: relative;
     margin-top: 25px;
     background: rgb(0,113,186);
-    margin-left: 30px;
+    margin-left: 15px;
     border: 0;
     outline: 0;
 }
 
 .bankButton {
     color: white;
-    position: relative;
-    margin-top: 20px;
+    position: relativabe;
+    
+    margin-top: 15px;
     background: rgb(11, 80, 207);
-    margin-left: 5px;
+    margin-left: -100px;
     border: 0;
     outline: 0;
 }
