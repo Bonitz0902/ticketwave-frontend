@@ -24,7 +24,7 @@ export const LoginAccountPage = () => {
 
     const signIn = () => {
         if (account === email && !invalidInput) {
-            navigate(-1);
+            navigate('/booking');
         }
         if (account !== email || invalidInput) {
             setShowAlert(true);

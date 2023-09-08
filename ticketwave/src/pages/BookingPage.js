@@ -1,8 +1,8 @@
 import './../css/BookingPage.css'
-import React, {useEffect, useState} from "react";
-import {Button, Image, Radio, Select} from "antd";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import React, { useEffect, useState } from "react";
+import { Button, Image, Radio, Select } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NavBar from "../components/NavBar";
 import BankTransfer from './BankTransfer';
 import { Transaction } from './Transaction';
@@ -42,7 +42,7 @@ export const BookingPage = () => {
 
                 loadSchedules.forEach(schedule => {
                     if (cinema.cinemaId === schedule.cinema.cinemaId) {
-                        timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
+                        timeSlot.push(`${ schedule.startTime } - ${ schedule.endTime } ${ cinema.cinemaName }`)
                         //console.log(timeSlot);
                         setAvailableTs(timeSlot);
                     }
@@ -77,12 +77,12 @@ export const BookingPage = () => {
 
 
     const onChangeDate = (e) => {
-        console.log(`radio checked:${e.target.value}`);
+        console.log(`radio checked:${ e.target.value }`);
     }
 
     const handleChange = (value) => {
         setCinemaLoc(value);
-        console.log(`selected ${value}`);
+        console.log(`selected ${ value }`);
         console.log(value);
     };
 
@@ -91,7 +91,7 @@ export const BookingPage = () => {
         while (index < 5) {
             index += 1;
             let newDate = date + index
-            newDate = `${month}/${newDate - 1}`;
+            newDate = `${ month }/${ newDate - 1 }`;
             showingDates.push(newDate);
         }
     }
@@ -99,9 +99,9 @@ export const BookingPage = () => {
     return (
         <div className={"bookingContainer"}>
             {createDates()}
-            <NavBar/>
+            <NavBar />
             <div className={"bookingPoster"}>
-                <Image preview={false} src={`${selectedMovie.imageUrlLandscape}`} className={"bookingImg"}/>
+                <Image preview={false} src={`${ selectedMovie.imageUrlLandscape }`} className={"bookingImg"} />
             </div>
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
@@ -113,13 +113,13 @@ export const BookingPage = () => {
                 </div>
                 <div className={"cinemaLocation"}>
                     Cinema
-                    <br/>
+                    <br />
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
-                            onChange={handleChange} options={filteredLocations}/>
+                        onChange={handleChange} options={filteredLocations} />
                 </div>
                 <div className={"availableDate"}>
                     Date
-                    <br/>
+                    <br />
                     <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
                         {
                             showingDates.map((date, index) => {
@@ -130,27 +130,27 @@ export const BookingPage = () => {
                 </div>
                 <div className={"availableTimeSlot"}>
                     Available Time Slot
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <Radio.Group className={"radio-custom"}>
                         {
                             loadSchedules.filter(sched => sched.cinema.cinemaId === cinemaLoc).map((schedCinema, index) =>
-                            <div key={index}>
-                                <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
-                            </div>
-                        )}
+                                <div key={index}>
+                                    <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
+                                </div>
+                            )}
                     </Radio.Group>
-                    <center><Button style={{borderRadius: "20px"}} type={"primary"} className={"pickSeatButton"}
-                                    size={"large"}>Choose seat</Button>
+                    <center><Button style={{ borderRadius: "20px" }} type={"primary"} className={"pickSeatButton"}
+                        size={"large"}>Choose seat</Button>
                         <span id="paymentBook">PAYMENT</span>
-                        <Button style={{borderRadius: "20px"}} type={"primary"} 
-                        onClick={gcash}
-                        className={"gcashButton"} 
-                        size={"large"}>GCASH</Button>
-                        <Button style={{borderRadius: "20px"}} type={"primary"} 
-                        onClick={bdo}
-                        className={"bankButton"} 
-                        size={"large"}>BDO</Button>
+                        <Button style={{ borderRadius: "20px" }} type={"primary"}
+                            onClick={gcash}
+                            className={"gcashButton"}
+                            size={"large"}>GCASH</Button>
+                        <Button style={{ borderRadius: "20px" }} type={"primary"}
+                            onClick={bdo}
+                            className={"bankButton"}
+                            size={"large"}>BDO</Button>
                     </center>
                 </div>
                 <div className={"bookingSeat"}>
@@ -161,11 +161,11 @@ export const BookingPage = () => {
                 </div>
                 <center>
 
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
-                            size={"large"}>Cancel</Button>
+                    <Button type={"primary"} style={{ borderRadius: "20px" }} className={"bookingCancel"} onClick={goBack}
+                        size={"large"}>Cancel</Button>
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} 
                     onClick={() => proceedReceipt(selectedMovie.imageUrlLandscape, selectedMovie.movieTitle)}
-                            size={"large"}>Proceed</Button>
+                        size={"large"}>Proceed</Button>
                 </center>
             </div>
         </div>
