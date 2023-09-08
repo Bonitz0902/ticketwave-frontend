@@ -14,8 +14,8 @@ export const MovieDetailPage = () => {
         navigate('/');
     }
 
-    const gotoBookingPage = () => {
-        navigate('/booking');
+    const gotoLoginPage = () => {
+        navigate('/login');
     }
 
     return (
@@ -29,7 +29,7 @@ export const MovieDetailPage = () => {
                         <center>
                             <Image preview={false} width={"250px"} src={selectedMovie.imageUrl} className={"image"}/>
                             <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookNowBtn"}
-                                    onClick={gotoBookingPage} size={"large"}> Book Now </Button>
+                                    onClick={gotoLoginPage} size={"large"}> Book Now </Button>
                             <p className={"movieDescription"}>{selectedMovie.description}</p>
                             <p>Rating: {selectedMovie.rating}/10<StarFilled className={"ratingIcon"}/></p>
                             <p>Genre: {selectedMovie.genre}</p>
