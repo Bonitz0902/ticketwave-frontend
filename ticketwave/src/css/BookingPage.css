@@ -172,6 +172,16 @@
     background-color: rgb(19,36,38);
 }
 
+.custom-modal-seat-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.ant-modal {
+margin: 20px; 
+}
+  
 
 
 

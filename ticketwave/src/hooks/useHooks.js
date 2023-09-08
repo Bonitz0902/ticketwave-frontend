@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {resetAllMovie, resetMovie, setSelectedMovie, loadLocations, loadCinemas, loadSchedules} from '../components/movieSlice';
 import { resetLogin, accountLogin } from '../components/loginSlice';
 import * as bookingApi from "../api/bookingApi";
+import {resetAllSeat, setSelectedSeats} from '../components/seatSlice';
 
 export const useApis = () => {
     const dispatch = useDispatch(); //dont remove to reuse 
@@ -16,6 +17,20 @@ export const useApis = () => {
     async function loadAllAvailableMovies() {
         const response = await dashboardApi.getAllAvailableMovies();
         dispatch(resetAllMovie(response.data));
+    };
+
+    async function getAllSeats() {
+        const response = await dashboardApi.getAllAvailableSeats();
+        dispatch(resetAllSeat(response.data));
+    }
+    
+    function setSelectedSeats(selectedSeats) {
+        dispatch(setSelectedSeats(selectedSeats));
+    }
+
+    async function bookMultipleSeat(seats) {
+        const response = await dashboardApi.bookMultipleSeat(seats);
+        dispatch(setSelectedSeats(response.data));
     };
 
     async function createAccount(name, email, password) {
@@ -60,7 +75,10 @@ export const useApis = () => {
         loadAccount,
         loadAllCinemasByLocationAndMovie,
         loadAllLocations,
+        getAllSeats,
+        bookMultipleSeat,
         loadAllCinemas,
-        loadAllSchedules
+        loadAllSchedules,
+        setSelectedSeats
     };
 }

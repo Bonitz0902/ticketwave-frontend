@@ -34,7 +34,7 @@ const GcashPayment = () => {
                         <span id="succRec">Successfully Paid To</span>
                         {/* <img src={ticketwavelogo} alt="TicketWave Logo" className="logo" /> */}
                         <span id="titleRec">TicketWave</span>
-                        <span id="totalRec">php 865</span>
+                        <span id="totalRec">php 1200</span>
                         
                     </div>
                     <span id="desc">Payment Method: <span id='gcash'>GCASH</span></span>

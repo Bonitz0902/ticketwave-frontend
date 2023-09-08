@@ -1,0 +1,52 @@
+#app {
+}
+
+h1.h1Class {
+  text-align: center;
+  align-items: center;
+}
+
+.container {
+  width: 350px;
+  margin: auto;
+}
+
+.center-text-screen {
+  text-align: center;
+}
+
+.grid td {
+  width: 25px;
+  height: 15px;
+  padding: 5px;
+  border: 2px solid goldenrod;
+  text-align: center;
+  float:left;
+  margin: 10px;
+}
+
+.grid td:hover {
+  cursor: pointer;
+  background-color:  rgb(19,36,38);
+  color: #fff;
+}
+
+.reserved {
+  background: rgb(19,36,38);
+  color: #fff;
+  /* pointer-events: none; */
+}
+
+.available {
+  color: rgb(19,36,38);
+}
+
+.chosen {
+  background:  rgb(19,36,38);
+  color: #fff;
+  display: inline-block;
+}
+
+span.liClass{
+  list-style: none;
+}

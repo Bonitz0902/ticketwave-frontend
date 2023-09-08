@@ -1,14 +1,18 @@
 import './../css/BookingPage.css'
 import React, { useEffect, useState } from "react";
-import { Button, Image, Radio, Select } from "antd";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import {Button, Image, Radio, Select,  Modal} from "antd";
+import {useNavigate, useLocation} from "react-router-dom";
+import SeatPicker from "../components/SeatPicker"
 import NavBar from "../components/NavBar";
+import {useSelector} from "react-redux";
 import BankTransfer from './BankTransfer';
 import { Transaction } from './Transaction';
 
 export const BookingPage = () => {
 
+
+    const location = useLocation();
+    const { id, seatingNumber } = location.state || {};
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
     const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
     const loadCinemas = useSelector(state => state.movieSlice.cinemas);
@@ -43,14 +47,11 @@ export const BookingPage = () => {
                 loadSchedules.forEach(schedule => {
                     if (cinema.cinemaId === schedule.cinema.cinemaId) {
                         timeSlot.push(`${ schedule.startTime } - ${ schedule.endTime } ${ cinema.cinemaName }`)
-                        //console.log(timeSlot);
                         setAvailableTs(timeSlot);
                     }
                 })
             }
 
-            // console.log(loadSchedules);
-            // console.log('test');
         })
         setFilteredLocations(locations);
     }, []);
@@ -82,11 +83,8 @@ export const BookingPage = () => {
 
     const handleChange = (value) => {
         setCinemaLoc(value);
-        console.log(`selected ${ value }`);
-        console.log(value);
     };
-
-    const createDates = () => {
+const createDates = () => {
         let index = 0;
         while (index < 5) {
             index += 1;
@@ -95,6 +93,23 @@ export const BookingPage = () => {
             showingDates.push(newDate);
         }
     }
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);    
+    const showModal = () => {
+        setOpen(true);
+  };
+    const handleOk = () => {
+        setConfirmLoading(true);
+        setTimeout(() => {
+        setOpen(false);
+        setConfirmLoading(false);
+        }, 1500);
+    };
+    const handleCancel = () => {
+        console.log('Clicked cancel button');
+        setOpen(false);
+    };
+
 
     return (
         <div className={"bookingContainer"}>
@@ -117,13 +132,13 @@ export const BookingPage = () => {
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
                         onChange={handleChange} options={filteredLocations} />
                 </div>
-                <div className={"availableDate"}>
+                <div className={"availableDate"} >
                     Date
                     <br />
                     <Radio.Group onChange={onChangeDate} defaultValue={0} className={"schedule"}>
                         {
                             showingDates.map((date, index) => {
-                                return <Radio.Button value={index} className={"chooseDates"}>{date}</Radio.Button>
+                                return <Radio.Button key={index} value={index} className={"chooseDates"}>{date}</Radio.Button>
                             })
                         }
                     </Radio.Group>
@@ -140,8 +155,13 @@ export const BookingPage = () => {
                                 </div>
                             )}
                     </Radio.Group>
-                    <center><Button style={{ borderRadius: "20px" }} type={"primary"} className={"pickSeatButton"}
-                        size={"large"}>Choose seat</Button>
+                    <center><Button 
+                                style={{borderRadius: "20px"}} 
+                                type={"primary"} 
+                                className={"pickSeatButton"} 
+                                onClick={showModal}
+                                size={"large"}>Choose Seat/s
+                            </Button>
                         <span id="paymentBook">PAYMENT</span>
                         <Button style={{ borderRadius: "20px" }} type={"primary"}
                             onClick={gcash}
@@ -167,6 +187,21 @@ export const BookingPage = () => {
                     onClick={() => proceedReceipt(selectedMovie.imageUrlLandscape, selectedMovie.movieTitle)}
                         size={"large"}>Proceed</Button>
                 </center>
+                <Modal
+                    title="Seat Reservation"
+                    open={open}
+                    onOk={handleOk}
+                    confirmLoading={confirmLoading}
+                    onCancel={handleCancel}
+                    className=".custom-modal-seat-picker" 
+                    style={{ minWidth: "50%", maxWidth: "80%" }}  
+                    >
+                        
+                    <div className="">
+                        <SeatPicker />
+                    </div>
+                </Modal>
+
             </div>
         </div>
     );

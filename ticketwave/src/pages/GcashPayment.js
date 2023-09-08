@@ -58,7 +58,7 @@ const GcashPayment = () => {
             
                 <div className='gcashContainer'>
                 <span>Merchant: <span id='merchName'>SIXSOME</span></span>
-                <span>Amount Due: <span id='amountDue'>PHP 865.00</span></span>
+                <span>Amount Due: <span id='amountDue'>PHP 1200</span></span>
 
                 <div className='gcashBody'>
                     <span>Login to pay with GCash</span>
