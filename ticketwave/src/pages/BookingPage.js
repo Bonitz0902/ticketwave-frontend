@@ -4,6 +4,8 @@ import {Button, Image, Radio, Select} from "antd";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import NavBar from "../components/NavBar";
+import BankTransfer from './BankTransfer';
+import { Transaction } from './Transaction';
 
 export const BookingPage = () => {
 
@@ -41,14 +43,14 @@ export const BookingPage = () => {
                 loadSchedules.forEach(schedule => {
                     if (cinema.cinemaId === schedule.cinema.cinemaId) {
                         timeSlot.push(`${schedule.startTime} - ${schedule.endTime} ${cinema.cinemaName}`)
-                        console.log(timeSlot);
+                        //console.log(timeSlot);
                         setAvailableTs(timeSlot);
                     }
                 })
             }
 
-            console.log(loadSchedules);
-            console.log('test');
+            // console.log(loadSchedules);
+            // console.log('test');
         })
         setFilteredLocations(locations);
     }, []);
@@ -64,8 +66,13 @@ export const BookingPage = () => {
         navigate('/bankTransfer');
     }
 
-    const proceedReceipt = () => {
-        navigate('/transaction');
+    const proceedReceipt = (image, title) => {
+        console.log(image,title);
+        navigate('/transaction', {
+            state: { image, title }, // Pass the image as a query parameter
+           
+        });
+        
     }
 
 
@@ -99,6 +106,7 @@ export const BookingPage = () => {
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
                     {selectedMovie.movieTitle}
+             
                 </div>
                 <div className={"bookingPrice"}>
                     PHP {selectedMovie.price}
@@ -152,9 +160,11 @@ export const BookingPage = () => {
                     Amount: 1200 PHP
                 </div>
                 <center>
+
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
                             size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"}
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} 
+                    onClick={() => proceedReceipt(selectedMovie.imageUrlLandscape, selectedMovie.movieTitle)}
                             size={"large"}>Proceed</Button>
                 </center>
             </div>
