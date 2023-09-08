@@ -5,11 +5,12 @@ import {useNavigate, useLocation} from "react-router-dom";
 import SeatPicker from "../components/SeatPicker"
 import NavBar from "../components/NavBar";
 import {useSelector} from "react-redux";
-
-
-
+import BankTransfer from './BankTransfer';
+import { Transaction } from './Transaction';
 
 export const BookingPage = () => {
+
+
     const location = useLocation();
     const { id, seatingNumber } = location.state || {};
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
@@ -66,12 +67,18 @@ export const BookingPage = () => {
         navigate('/bankTransfer');
     }
 
-    const proceedReceipt = () => {
-        navigate('/transaction');
+    const proceedReceipt = (image, title) => {
+        console.log(image,title);
+        navigate('/transaction', {
+            state: { image, title }, // Pass the image as a query parameter
+           
+        });
+        
     }
 
 
     const onChangeDate = (e) => {
+        console.log(`radio checked:${e.target.value}`);
     }
 
     const handleChange = (value) => {
@@ -114,6 +121,7 @@ const createDates = () => {
             <div className={"bookingDetailsContainer"}>
                 <div className={"bookingDetails"}>
                     {selectedMovie.movieTitle}
+             
                 </div>
                 <div className={"bookingPrice"}>
                     PHP {selectedMovie.price}
@@ -166,15 +174,17 @@ const createDates = () => {
                     </center>
                 </div>
                 <div className={"bookingSeat"}>
-                     seat/s: C4, C5, C6
+                    3 seat/s: C4, C5, C6
                 </div>
                 <div className={"finalPrice"}>
                     Amount: 1200 PHP
                 </div>
                 <center>
+
                     <Button type={"primary"} style={{borderRadius: "20px"}} className={"bookingCancel"} onClick={goBack}
                             size={"large"}>Cancel</Button>
-                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} onClick={proceedReceipt}
+                    <Button type={"primary"} style={{borderRadius: "20px"}} className={"proceedButton"} 
+                    onClick={() => proceedReceipt(selectedMovie.imageUrlLandscape, selectedMovie.movieTitle)}
                             size={"large"}>Proceed</Button>
                 </center>
                 <Modal
