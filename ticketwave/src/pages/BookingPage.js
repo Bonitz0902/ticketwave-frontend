@@ -127,7 +127,7 @@ const createDates = () => {
                     PHP {selectedMovie.price}
                 </div>
                 <div className={"cinemaLocation"}>
-                    Cinema
+                    Cinema Location
                     <br />
                     <Select defaultValue={"Choose Location"} className={"locationDropdown"}
                         onChange={handleChange} options={filteredLocations} />
