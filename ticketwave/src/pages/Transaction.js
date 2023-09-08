@@ -3,12 +3,14 @@ import NavBar from '../components/NavBar';
 import {useSelector} from "react-redux";
 import QRCode from 'qrcode.react';
 import {ArrowLeftOutlined} from "@ant-design/icons";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
-export const Transaction = () => {
+export const Transaction = (props) => {
     const movieList = useSelector(state => state.movieSlice.movieSlice);
     const navigate = useNavigate();
     const textData = 'Hello, World!';
+    const location = useLocation();
+        const { image, title } = location.state || {};
 
     const homepage = () => {
         navigate('/');
@@ -22,9 +24,11 @@ export const Transaction = () => {
 
             <ArrowLeftOutlined className="arrowBack" onClick={homepage}/>
             <div className='ticketContainer'>
-                <img id='displayImage' src="https://cdn.mos.cms.futurecdn.net/q8D2qjugGnMbzajVbWWC7R.jpg" ></img>
+            
+                <img id='displayImage' src={image} ></img>
                 <div className='ticketBody'>
-                    <span id='title'>DUNE <span id='total'>TOTAL PHP</span></span>
+                    <span id='title'>{title}</span>
+                    <span id='total'>1200 PHP</span>
                     <span className="ticket-info">Ticket no. 01</span>
                     <span className="ticket-info" id='location'>SM MOA Imax Theater  </span>
                     <span className="ticket-info" id='sched'>06/09/2023 10:00 - 13:00</span>

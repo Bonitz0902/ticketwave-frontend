@@ -70,7 +70,6 @@ const BankTransfer = () => {
                 <input id='accountNum' placeholder='Account Number' onChange={handleAccountChange}/>
                    
                 </div>
-
                 <button className='continue' onClick={() => gotoBookingPage()}>PROCEED</button>
                 <button className='cancel' onClick={() => cancelBooking()}>CANCEL</button>
                 </div>
