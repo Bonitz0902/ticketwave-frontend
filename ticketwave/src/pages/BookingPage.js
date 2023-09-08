@@ -16,7 +16,6 @@ export const BookingPage = () => {
     const location = useLocation();
     const { id, seatingNumber } = location.state || {};
     const selectedMovie = useSelector(state => state.movieSlice.selectedMovie);
-    // const selectedSeats = useSelector(state => state.seatSlice.selectedSeats);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const loadLocations = useSelector(state => state.movieSlice.cinemaLocations);
     const loadCinemas = useSelector(state => state.movieSlice.cinemas);
@@ -79,7 +78,7 @@ export const BookingPage = () => {
     const proceedReceipt = (image, title) => {
         console.log(image,title);
         navigate('/transaction', {
-            state: { image, title }, // Pass the image as a query parameter
+            state: { image, title }, 
            
         });
         
@@ -177,10 +176,7 @@ const createDates = () => {
                     <br />
                     <Radio.Group className={"radio-custom"}>
                         {renderTimeSlot()}
-                                <div key={index}>
-                                    <Radio value={index}>{schedCinema.startTime} - {schedCinema.endTime} {schedCinema.cinema.cinemaName}</Radio>
-                                </div>
-                            )}
+                        
                     </Radio.Group>
                     <center>
                         <Button 
